@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "NC_EDU_SD2_Ilya_Prishchepa"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/SubscriptionDB"
+    username: root
+    password: rootroot
+  jpa:
+    database: MYSQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true

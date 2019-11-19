@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+back:
+  server:
+    uri: http://localhost:8080
+
+spring:
+  application:
+    name: "NC_EDU_SD2_Ilya_Prishchepa"
