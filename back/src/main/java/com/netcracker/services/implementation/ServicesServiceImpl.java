@@ -27,8 +27,8 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
     @Override
-    public List<Services> findAll(int page, int size) {
-        return (List<Services>) servicesRepo.findAll(PageRequest.of(page,size));
+    public List<Services> findAll(int pageNo, int pageSize) {
+        return servicesRepo.findAll(PageRequest.of(pageNo,pageSize)).getContent();
     }
 
     @Override

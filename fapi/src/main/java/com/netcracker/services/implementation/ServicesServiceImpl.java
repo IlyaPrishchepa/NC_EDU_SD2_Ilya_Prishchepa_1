@@ -36,8 +36,8 @@ public class ServicesServiceImpl implements ServicesService {
   }
 
   @Override
-  public List<Services> findAll(int page, int size) {
-    return Arrays.asList(restTemplate.getForObject(backendApiProperties.getServicesUri() + page + size, Services[].class));
+  public List<Services> findAll(int pageNo, int pageSize) {
+    return Arrays.asList(restTemplate.getForObject(backendApiProperties.getServicesUri() +"/?pageSize="+pageSize+"&pageNo="+pageNo, Services[].class));
   }
 
 

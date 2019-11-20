@@ -13,8 +13,8 @@ public class ServicesController {
   @Autowired
   private ServicesServiceImpl servicesService;
 
-  @GetMapping( value = "/", params = {"page","size"})
-  public List<Services> getAll(@RequestParam int page, @RequestParam int size) {
-    return servicesService.findAll(page,size);}
+  @GetMapping
+  public List<Services> getAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+    return servicesService.findAll(pageNo,pageSize);}
 
 }
