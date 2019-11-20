@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RegUser } from '../../components/registration/model/user/reg-user';
+import { RegUser } from '../../components/user/model/reg-user';
 
 @Injectable()
 export class UserService {
@@ -13,4 +13,5 @@ export class UserService {
   public save(regUser: RegUser) {
     return this.http.post<RegUser>(this.usersUrl, regUser).subscribe(() => alert("User was successfully created"));
   }
+
 }

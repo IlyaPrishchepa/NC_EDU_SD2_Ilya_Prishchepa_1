@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserFormComponent } from './components/registration/form/user-form/user-form.component';
-import { UserService } from './services/user/user.service';
+import { UserService } from './services/reg-user/user.service';
 import { EwalletFormComponent } from './components/ewallet/ewallet-form/ewallet-form.component';
 import {NgbDropdownModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { CompanyFormComponent } from './components/registration/form/company-form/company-form.component';
@@ -17,6 +17,8 @@ import { CompanyRegistrationPageFormComponent } from './pages/company-registrati
 import { LoginPageFormComponent } from './pages/login-page-form/login-page-form.component';
 import { UserHomePageFormComponent } from './pages/user-home-page-form/user-home-page-form.component';
 import { CompanyHomePageFormComponent } from './pages/company-home-page-form/company-home-page-form.component';
+import { HeaderAdminFormComponent } from './components/header/header-admin-form/header-admin-form.component';
+import { UserTableFormComponent } from './components/user/user-table-form/user-table-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { CompanyHomePageFormComponent } from './pages/company-home-page-form/com
     CompanyRegistrationPageFormComponent,
     LoginPageFormComponent,
     UserHomePageFormComponent,
-    CompanyHomePageFormComponent
+    CompanyHomePageFormComponent,
+    HeaderAdminFormComponent,
+    UserTableFormComponent
   ],
   imports: [
     BrowserModule,

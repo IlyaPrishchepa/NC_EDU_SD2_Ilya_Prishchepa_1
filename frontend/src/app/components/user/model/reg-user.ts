@@ -4,3 +4,4 @@ export class RegUser {
   email?: string;
   password?: string;
 }
+
