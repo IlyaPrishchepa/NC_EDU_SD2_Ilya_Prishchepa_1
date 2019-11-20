@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RegUser } from '../../model/user/reg-user';
+import { RegUser } from '../../components/registration/model/user/reg-user';
 
 @Injectable()
 export class UserService {

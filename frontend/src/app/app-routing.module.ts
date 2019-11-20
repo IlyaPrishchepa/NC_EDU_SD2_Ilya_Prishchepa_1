@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserFormComponent } from './components/registration/form/user-form/user-form.component';
 import {EwalletFormComponent} from './components/ewallet/ewallet-form/ewallet-form.component';
-import {CompanyFormComponent} from './components/registration/form/company-form/company-form.component';
-import {LoginFormComponent} from './components/login/login-form/login-form.component';
-import {UserHomeFormComponent} from './components/home/form/user-home-form/user-home-form.component';
+import {UserRegistrationPageFormComponent} from "./pages/user-registration-page-form/user-registration-page-form.component";
+import {CompanyRegistrationPageFormComponent} from "./pages/company-registration-page-form/company-registration-page-form.component";
+import {LoginPageFormComponent} from "./pages/login-page-form/login-page-form.component";
+import {UserHomePageFormComponent} from "./pages/user-home-page-form/user-home-page-form.component";
 
 const routes: Routes = [
-  { path: 'registration-user', component: UserFormComponent },
-  { path: 'registration-company', component: CompanyFormComponent },
-  { path: 'login', component: LoginFormComponent },
-  { path: 'ewallet', component: EwalletFormComponent },
-  { path: 'user-home', component: UserHomeFormComponent }
+  { path: 'registration-user', component: UserRegistrationPageFormComponent },
+  { path: 'registration-company', component: CompanyRegistrationPageFormComponent},
+  { path: 'login', component: LoginPageFormComponent },
+  { path: 'user-home', component: UserHomePageFormComponent },
+  { path: 'ewallet', component: EwalletFormComponent }
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {EwalletService} from '../../services/ewallet/ewallet.service';
+import {EwalletService} from '../../../services/ewallet/ewallet.service';
 import {Ewallet} from '../model/ewallet';
 
 @Component({

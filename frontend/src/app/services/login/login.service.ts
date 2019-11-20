@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Login} from '../../components/login/model/login';
-import {RegUser} from '../../components/registration/model/user/reg-user';
 
 @Injectable({
   providedIn: 'root'
