@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Ewallet} from '../../ewallet/model/ewallet';
+import {Ewallet} from '../../components/ewallet/model/ewallet';
 
 @Injectable({
   providedIn: 'root'

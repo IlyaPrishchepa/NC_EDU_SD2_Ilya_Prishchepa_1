@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserFormComponent } from './registration/form/user-form/user-form.component';
-import {EwalletFormComponent} from './ewallet/ewallet-form/ewallet-form.component';
-import {CompanyFormComponent} from './registration/form/company-form/company-form.component';
-import {LoginFormComponent} from './login/login-form/login-form.component';
-import {UserHomeFormComponent} from './home/form/user-home-form/user-home-form.component';
+import { UserFormComponent } from './components/registration/form/user-form/user-form.component';
+import {EwalletFormComponent} from './components/ewallet/ewallet-form/ewallet-form.component';
+import {CompanyFormComponent} from './components/registration/form/company-form/company-form.component';
+import {LoginFormComponent} from './components/login/login-form/login-form.component';
+import {UserHomeFormComponent} from './components/home/form/user-home-form/user-home-form.component';
 
 const routes: Routes = [
   { path: 'registration-user', component: UserFormComponent },
