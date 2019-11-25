@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServicesService} from "../../../services/services/services.service";
 import {Services} from "../model/services";
-import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Component({
   selector: 'app-services-form',
@@ -22,7 +21,7 @@ export class ServicesFormComponent implements OnInit {
   }
 
   getServices() {
-    this.servicesService.getServices(this.page-1,this.pageSize)
+    this.servicesService.getServices(this.page,this.pageSize)
       .subscribe((services: Services[])=>{this.services = services});
   }
 
@@ -36,7 +35,8 @@ export class ServicesFormComponent implements OnInit {
     this.getServicesSize();
   }
 
-  onPageChanged(page){
+  onPageChanged(pageNum){
+    this.page=pageNum
     this.getServices();
   }
 
