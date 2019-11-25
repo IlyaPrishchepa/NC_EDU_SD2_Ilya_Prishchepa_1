@@ -19,6 +19,9 @@ import { UserHomePageFormComponent } from './pages/user-home-page-form/user-home
 import { CompanyHomePageFormComponent } from './pages/company-home-page-form/company-home-page-form.component';
 import { HeaderAdminFormComponent } from './components/header/header-admin-form/header-admin-form.component';
 import { UserTableFormComponent } from './components/user/user-table-form/user-table-form.component';
+import { ServicesFormComponent } from './components/services/services-form/services-form.component';
+import { HeaderCompanyFormComponent } from './components/header/header-company-form/header-company-form.component';
+import { HeaderUserFormComponent } from './components/header/header-user-form/header-user-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { UserTableFormComponent } from './components/user/user-table-form/user-t
     UserHomePageFormComponent,
     CompanyHomePageFormComponent,
     HeaderAdminFormComponent,
-    UserTableFormComponent
+    UserTableFormComponent,
+    ServicesFormComponent,
+    HeaderCompanyFormComponent,
+    HeaderUserFormComponent
   ],
   imports: [
     BrowserModule,

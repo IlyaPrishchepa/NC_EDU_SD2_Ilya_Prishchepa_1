@@ -50,4 +50,9 @@ public class ServicesServiceImpl implements ServicesService {
   public Services findById(int id) {
     return null;
   }
+
+  @Override
+  public int getSize(){
+    return restTemplate.getForObject(backendApiProperties.getServicesUri()+"/size", Integer.class);
+  }
 }

@@ -40,4 +40,9 @@ public class ServicesServiceImpl implements ServicesService {
     public Services findById(int id) {
         return servicesRepo.findById(id).get();
     }
+
+    @Override
+    public int getSize(){
+        return (int)servicesRepo.count();
+    }
 }

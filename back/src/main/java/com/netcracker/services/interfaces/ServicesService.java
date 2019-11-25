@@ -10,4 +10,5 @@ public interface ServicesService {
     List<Services> findAll(int page, int size);
     Services findByName(String name);
     Services findById(int id);
+    int getSize();
 }

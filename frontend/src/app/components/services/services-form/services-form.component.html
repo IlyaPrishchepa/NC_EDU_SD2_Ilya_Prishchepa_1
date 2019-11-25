@@ -1,0 +1,33 @@
+<div class="container my-4">
+  <div class="d-flex justify-content-between flex-wrap">
+<div *ngFor="let service of services  | slice: (page-1)
+    * pageSize : (page-1) * pageSize + pageSize">
+  <div class="card-box">
+    <div class="card text-center" data-background="image">
+      <h3 class="title title-modern">{{service.name}}</h3>
+      <div class="content">
+        <div class="price">
+          <h6>From</h6>
+          <h4>{{service.price}}<b class="currency">$</b></h4>
+        </div>
+        <p class="description">{{service.description}}</p>
+      </div>
+      <div class="filter"></div>
+      <div class="footer btn-center">
+        <button class="btn btn-neutral btn-round btn-fill">Book Now!</button>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [collectionSize]="collectionSize"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [boundaryLinks]="true"
+  (pageChange)="onPageChanged($event)">
+</ngb-pagination>
