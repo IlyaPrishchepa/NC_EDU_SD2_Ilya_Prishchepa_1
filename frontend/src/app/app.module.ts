@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { UserFormComponent } from './components/registration/form/user-form/user-form.component';
 import { UserService } from './services/reg-user/user.service';
 import { EwalletFormComponent } from './components/ewallet/ewallet-form/ewallet-form.component';
-import {NgbDropdownModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdownModule, NgbModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { CompanyFormComponent } from './components/registration/form/company-form/company-form.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { UserHomeFormComponent } from './components/home/form/user-home-form/user-home-form.component';
@@ -19,9 +19,12 @@ import { UserHomePageFormComponent } from './pages/user-home-page-form/user-home
 import { CompanyHomePageFormComponent } from './pages/company-home-page-form/company-home-page-form.component';
 import { HeaderAdminFormComponent } from './components/header/header-admin-form/header-admin-form.component';
 import { UserTableFormComponent } from './components/user/user-table-form/user-table-form.component';
-import { ServicesFormComponent } from './components/services/services-form/services-form.component';
+import { ServicesFormComponent } from './components/service/services-form/services-form.component';
 import { HeaderCompanyFormComponent } from './components/header/header-company-form/header-company-form.component';
 import { HeaderUserFormComponent } from './components/header/header-user-form/header-user-form.component';
+import { SubscriptionFormComponent } from './components/subscription/subscription-form/subscription-form.component';
+import { UserSubscriptionPageFormComponent } from './pages/user-subscription-page-form/user-subscription-page-form.component';
+import { EwalletPageFormComponent } from './pages/ewallet-page-form/ewallet-page-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { HeaderUserFormComponent } from './components/header/header-user-form/he
     UserTableFormComponent,
     ServicesFormComponent,
     HeaderCompanyFormComponent,
-    HeaderUserFormComponent
+    HeaderUserFormComponent,
+    SubscriptionFormComponent,
+    UserSubscriptionPageFormComponent,
+    EwalletPageFormComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +55,8 @@ import { HeaderUserFormComponent } from './components/header/header-user-form/he
     HttpClientModule,
     FormsModule,
     NgbDropdownModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    NgbModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

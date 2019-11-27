@@ -1,0 +1,27 @@
+<div class="container my-4">
+  <h1 class="text-center">Yor subscription</h1>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Start date</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let subscription of subscriptions">
+
+    </tbody>
+  </table>
+
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [collectionSize]="collectionSize"
+    [pageSize]="pageSize"
+    [(page)]="page"
+    [boundaryLinks]="true"
+    (pageChange)="onPageChanged($event)">
+  </ngb-pagination>
+</div>

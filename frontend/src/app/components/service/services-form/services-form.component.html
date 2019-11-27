@@ -1,0 +1,65 @@
+<div class="container my-4">
+  <h1 class="text-center">Services</h1>
+  <div class="d-flex justify-content-between flex-wrap">
+    <div *ngFor="let service of services">
+      <div class="card-box">
+        <div class="card text-center" data-background="image">
+          <h3 class="title title-modern">{{service.name}}</h3>
+          <div class="content">
+            <div class="price">
+              <h6>From</h6>
+              <h4>{{service.price}}<b class="currency">$</b></h4>
+            </div>
+            <p class="description">{{service.description}}</p>
+          </div>
+          <div class="filter"></div>
+          <div class="footer btn-center">
+            <button class="btn btn-neutral btn-round btn-fill" (click)="openModal(content, service)">Subscribe!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [collectionSize]="collectionSize"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [boundaryLinks]="true"
+  (pageChange)="onPageChanged($event)">
+</ngb-pagination>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Choice card</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h1 class="text-center">{{selectedService.price}}$</h1>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Number card</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Choice</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ewallet of ewallets">
+        <td> {{ ewallet.numCard | number }}</td>
+        <td>{{ ewallet.amount | number }}</td>
+        <button type="button" class="btn btn-light">Pay</button>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

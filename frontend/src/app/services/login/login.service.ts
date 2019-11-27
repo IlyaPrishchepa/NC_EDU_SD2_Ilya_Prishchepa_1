@@ -13,7 +13,8 @@ export class LoginService {
     this.loginUrl = 'http://localhost:8081/login';
   }
 
-  public input(login: Login) {
-    return this.http.post<Login>(this.loginUrl, login).subscribe(() => alert("Executed"));
+  public authenticate(email,password){
+    return this.http.get<Login>(this.loginUrl+"/?email="+ email + "&password=" + password)
   }
+
 }

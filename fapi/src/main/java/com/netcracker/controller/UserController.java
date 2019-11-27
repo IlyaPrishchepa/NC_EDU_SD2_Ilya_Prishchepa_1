@@ -43,5 +43,8 @@ public class UserController {
         userService.delete(id);
     }
 
+    @GetMapping("/find-by-loginId/{loginId}")
+    public User findByLoginId(@PathVariable int loginId) {
+        return userService.findByLoginId(loginId);}
 
 }

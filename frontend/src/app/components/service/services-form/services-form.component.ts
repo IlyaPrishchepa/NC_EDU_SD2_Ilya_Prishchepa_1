@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ServicesService} from "../../../services/services/services.service";
-import {Services} from "../model/services";
+import {Service} from "../model/service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-services-form',
@@ -13,16 +14,17 @@ export class ServicesFormComponent implements OnInit {
   public pageSize: number = 6;
   public collectionSize: number;
 
-  public services: Services[] = [];
+  public services: Service[] = [];
+  public selectedService: Service;
 
 
-  constructor(private servicesService:ServicesService) {
+  constructor(private modalService: NgbModal,private servicesService:ServicesService) {
     this.page=1;
   }
 
   getServices() {
     this.servicesService.getServices(this.page,this.pageSize)
-      .subscribe((services: Services[])=>{this.services = services});
+      .subscribe((services: Service[])=>{this.services = services});
   }
 
   getServicesSize(){
@@ -40,6 +42,10 @@ export class ServicesFormComponent implements OnInit {
     this.getServices();
   }
 
+  openModal(content, service) {
+    this.selectedService = service;
+    const modalRef = this.modalService.open(content);
+  }
 
 
 }

@@ -1,6 +1,6 @@
 package com.netcracker.controller;
 
-import com.netcracker.models.Login;
+import com.netcracker.converter.RegistrationConverter;
 import com.netcracker.models.RegUser;
 import com.netcracker.models.User;
 import com.netcracker.services.implementation.UserServiceImpl;
@@ -16,20 +16,12 @@ public class RegistrationUserController {
 
     @Autowired
     private UserServiceImpl userService;
+    @Autowired
+    private RegistrationConverter converter;
 
     @PostMapping
     public User add(@RequestBody RegUser regUser){
-
-        Login login = new Login();
-        login.setEmail(regUser.getEmail());
-        login.setPassword(regUser.getPassword());
-
-        User user = new User();
-        user.setName(regUser.getName());
-        user.setSurname(regUser.getSurname());
-        user.setLoginId(login);
-
-        return userService.save(user);
+        return userService.save(converter.splitRegUserIntoUser(regUser));
     }
 
 }

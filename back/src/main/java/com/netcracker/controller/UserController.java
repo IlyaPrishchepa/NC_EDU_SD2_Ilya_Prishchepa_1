@@ -1,6 +1,5 @@
 package com.netcracker.controller;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.netcracker.entity.User;
 import com.netcracker.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,10 @@ public class UserController {
   @GetMapping("/find-by-surname/{str}")
   public List<User> findBySurname(@PathVariable String str) {
     return userService.findBySurname(str);}
+
+  @GetMapping("/find-by-loginId/{loginId}")
+  public User findByLoginId(@PathVariable int loginId) {
+    return userService.findByLoginId(loginId);}
 
   @PostMapping
   public User add(@RequestBody User user){

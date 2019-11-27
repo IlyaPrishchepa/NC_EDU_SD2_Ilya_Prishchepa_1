@@ -1,5 +1,6 @@
 package com.netcracker.controller;
 
+import com.netcracker.converter.RegistrationConverter;
 import com.netcracker.models.Company;
 import com.netcracker.models.Login;
 import com.netcracker.models.RegCompany;
@@ -15,18 +16,11 @@ import org.springframework.web.bind.annotation.*;
 public class RegistrationCompanyController {
   @Autowired
   private CompanyServiceImpl companyService;
+  @Autowired
+  private RegistrationConverter converter;
 
   @PostMapping
   public Company add(@RequestBody RegCompany regCompany){
-
-    Login login = new Login();
-    login.setEmail(regCompany.getEmail());
-    login.setPassword(regCompany.getPassword());
-
-    Company company = new Company();
-    company.setName(regCompany.getName());
-    company.setLoginId2(login);
-
-    return companyService.save(company);
+    return companyService.save(converter.splitRegCompanyIntoCompany(regCompany));
   }
 }
