@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +25,10 @@ import { HeaderUserFormComponent } from './components/header/header-user-form/he
 import { SubscriptionFormComponent } from './components/subscription/subscription-form/subscription-form.component';
 import { UserSubscriptionPageFormComponent } from './pages/user-subscription-page-form/user-subscription-page-form.component';
 import { EwalletPageFormComponent } from './pages/ewallet-page-form/ewallet-page-form.component';
+import { AdminHomeFormComponent } from './components/home/form/admin-home-form/admin-home-form.component';
+import { AdminHomePageFormComponent } from './pages/admin-home-page-form/admin-home-page-form.component';
+import { CategoryFormComponent } from './components/category/category-form/category-form.component';
+import { CategoryPageFormComponent } from './pages/category-page-form/category-page-form.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { EwalletPageFormComponent } from './pages/ewallet-page-form/ewallet-page
     HeaderUserFormComponent,
     SubscriptionFormComponent,
     UserSubscriptionPageFormComponent,
-    EwalletPageFormComponent
+    EwalletPageFormComponent,
+    AdminHomeFormComponent,
+    AdminHomePageFormComponent,
+    CategoryFormComponent,
+    CategoryPageFormComponent
   ],
   imports: [
     BrowserModule,

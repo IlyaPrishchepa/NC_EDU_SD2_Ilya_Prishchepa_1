@@ -6,6 +6,7 @@ import {Service} from "../../components/service/model/service"
   providedIn: 'root'
 })
 export class ServicesService {
+
   private servicesUrl: string;
 
   constructor(private http: HttpClient) {
