@@ -35,13 +35,18 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> findAll() {
-        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getCategoryUri(), Category[].class));
+    public List<Category> findAll(int pageNo, int pageSize) {
+        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getCategoryUri()
+                +"/?pageSize="+pageSize+"&pageNo="+pageNo, Category[].class));
     }
 
     @Override
     public Category findById(int id) {
         return restTemplate.getForObject(backendApiProperties.getCategoryUri()
                 +"/" + id, Category.class);
+    }
+    @Override
+    public int getSize(){
+        return restTemplate.getForObject(backendApiProperties.getCategoryUri()+"/size", Integer.class);
     }
 }

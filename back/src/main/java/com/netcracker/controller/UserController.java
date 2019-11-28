@@ -30,9 +30,9 @@ public class UserController {
   public List<User> findBySurname(@PathVariable String str) {
     return userService.findBySurname(str);}
 
-  @GetMapping("/find-by-loginId/{loginId}")
-  public User findByLoginId(@PathVariable int loginId) {
-    return userService.findByLoginId(loginId);}
+  @GetMapping("/find-by-email/{email}")
+  public User findByLoginId(@PathVariable String email) {
+    return userService.findByEmail(email);}
 
   @PostMapping
   public User add(@RequestBody User user){

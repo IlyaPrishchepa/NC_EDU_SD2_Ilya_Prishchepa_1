@@ -43,8 +43,8 @@ public class UserController {
         userService.delete(id);
     }
 
-    @GetMapping("/find-by-loginId/{loginId}")
-    public User findByLoginId(@PathVariable int loginId) {
-        return userService.findByLoginId(loginId);}
+    @GetMapping("/find-by-email/{email}")
+    public User findByLoginId(@PathVariable String email) {
+        return userService.findByEmail(email);}
 
 }

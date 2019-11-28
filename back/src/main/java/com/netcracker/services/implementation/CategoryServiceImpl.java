@@ -4,6 +4,7 @@ import com.netcracker.entity.Category;
 import com.netcracker.repository.CategoryRepo;
 import com.netcracker.services.interfaces.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,12 +26,17 @@ public class CategoryServiceImpl implements CategoryService {
   }
 
   @Override
-  public List<Category> findAll() {
-    return (List<Category>) categoryRepo.findAll();
+  public List<Category> findAll(int pageNo, int pageSize) {
+    return (List<Category>) categoryRepo.findAll(PageRequest.of(pageNo,pageSize)).getContent();
   }
 
   @Override
   public Category findById(int id) {
     return categoryRepo.findById(id).get();
+  }
+
+  @Override
+  public int getSize(){
+    return (int)categoryRepo.count();
   }
 }

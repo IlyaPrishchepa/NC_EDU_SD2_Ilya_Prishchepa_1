@@ -28,13 +28,17 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<Category> getAll(){
-        return categoryService.findAll();
+    public List<Category> getAll(@RequestParam int pageNo, @RequestParam int pageSize){
+        return categoryService.findAll(pageNo-1,pageSize);
     }
 
     @GetMapping("/{id}")
     public Category findById(@PathVariable int id) {
         return categoryService.findById(id);
     }
+
+    @GetMapping("/size")
+    public int getSize() {
+        return categoryService.getSize(); }
 
 }
