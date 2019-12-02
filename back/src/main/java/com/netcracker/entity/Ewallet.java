@@ -1,8 +1,10 @@
 package com.netcracker.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Data
 @Entity
@@ -33,5 +35,9 @@ public class Ewallet {
     @Basic
     @Column(name = "login_id_3")
     private int loginId3;
+
+    @OneToMany(mappedBy = "ewalletId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Collection<Subscription> subscription;
 
 }

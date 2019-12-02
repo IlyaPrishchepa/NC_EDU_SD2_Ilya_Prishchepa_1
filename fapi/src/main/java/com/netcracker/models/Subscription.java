@@ -12,7 +12,7 @@ public class Subscription {
     private int id;
     private String status;
     private Date startDate;
-    private Date endDate;
+    private Ewallet ewalletId;
     private Services servicesId;
     private User userId;
 

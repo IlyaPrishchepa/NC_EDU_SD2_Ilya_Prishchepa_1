@@ -37,15 +37,6 @@ public class Services {
     @Column(name = "company_id")
     private int companyId;
 
-
-/*    @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
-    private Category categoryId;
-
-    @ManyToOne
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
-    private Company companyId;*/
-
     @OneToMany(mappedBy = "servicesId",  cascade = CascadeType.ALL)
     @JsonIgnore
     private Collection<Subscription> subscription;

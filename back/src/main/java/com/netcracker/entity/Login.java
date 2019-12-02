@@ -1,10 +1,10 @@
 package com.netcracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.netcracker.entity.enums.Role;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Data
 @Entity
@@ -25,17 +25,13 @@ public class Login {
     private String password;
 
     @Basic
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "role",columnDefinition = "varchar(255) default 'USER'")
-    private String role;
+    private Role role;
 
     @OneToOne(mappedBy = "loginId2", cascade = CascadeType.ALL)
     @JsonIgnore
     private Company companies_id;
-
-/*    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "login_id_3")
-    @JsonIgnore
-    private Collection<Ewallet> ewallets_id;*/
 
     @OneToOne(mappedBy = "loginId", cascade = CascadeType.ALL)
     @JsonIgnore
