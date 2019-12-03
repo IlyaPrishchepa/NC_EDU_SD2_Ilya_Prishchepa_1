@@ -9,6 +9,7 @@ public class RegistrationConverter {
     public User splitRegUserIntoUser (RegUser regUser){
         Login login = new Login();
         login.setEmail(regUser.getEmail());
+        login.setRole("USER");
         login.setPassword(regUser.getPassword());
 
         User user = new User();
@@ -21,6 +22,7 @@ public class RegistrationConverter {
     public Company splitRegCompanyIntoCompany(RegCompany regCompany){
         Login login = new Login();
         login.setEmail(regCompany.getEmail());
+        login.setRole("COMPANY");
         login.setPassword(regCompany.getPassword());
 
         Company company = new Company();

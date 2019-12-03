@@ -29,6 +29,7 @@ import { AdminHomeFormComponent } from './components/home/form/admin-home-form/a
 import { AdminHomePageFormComponent } from './pages/admin-home-page-form/admin-home-page-form.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
 import { CategoryPageFormComponent } from './pages/category-page-form/category-page-form.component';
+import {TokenStorage} from "./token.storage";
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { CategoryPageFormComponent } from './pages/category-page-form/category-p
     NgbPaginationModule,
     NgbModule
   ],
-  providers: [UserService],
+  providers: [UserService,TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

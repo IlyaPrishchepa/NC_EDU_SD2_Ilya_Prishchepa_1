@@ -8,3 +8,12 @@ back:
 spring:
   application:
     name: "NC_EDU_SD2_Ilya_Prishchepa"
+
+security:
+  config:
+    signinkey: "SubscriptionBD"
+    prefix: "Bearer "
+    header: "Authorization"
+    authoritieskey: "scopes"
+    token:
+      validityseconds: 18000
