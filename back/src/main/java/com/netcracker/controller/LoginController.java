@@ -22,6 +22,11 @@ public class LoginController {
         return loginService.findByEmailAndPassword(email,password);
     }
 
+    @GetMapping("/find-login-by-email/{email}")
+    public Login findLoginByEmail(@PathVariable String email) {
+        return loginService.findLoginByEmail(email);
+    }
+
     @DeleteMapping
     public void delete(@PathVariable int id) {
         loginService.delete(id);

@@ -2,6 +2,7 @@ package com.netcracker.entity;
 
 import com.netcracker.entity.enums.Status;
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -24,6 +25,7 @@ public class Subscription {
     private Status status;
 
     @Basic
+    @CreatedDate
     @Column(name = "start_date",nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;

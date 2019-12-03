@@ -5,5 +5,6 @@ import com.netcracker.entity.Login;
 public interface LoginService {
   Login create(Login login);
   Login findByEmailAndPassword(String email, String password);
+  Login findLoginByEmail(String email);
   void delete(int id);
 }
