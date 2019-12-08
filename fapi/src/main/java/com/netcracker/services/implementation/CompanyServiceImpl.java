@@ -35,8 +35,9 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Company> findAll() {
-        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getCompanyUri(), Company[].class));
+    public List<Company> findAll(int pageNo, int pageSize) {
+        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getCompanyUri()
+                +"/?pageSize="+pageSize+"&pageNo="+pageNo, Company[].class));
     }
 
     @Override
@@ -49,5 +50,9 @@ public class CompanyServiceImpl implements CompanyService {
     public Company findByName(String name) {
         return restTemplate.getForObject(backendApiProperties.getCompanyUri()
                 +"/find-by-name/" + name, Company.class);
+    }
+    @Override
+    public int getSize(){
+        return restTemplate.getForObject(backendApiProperties.getCompanyUri()+"/size", Integer.class);
     }
 }

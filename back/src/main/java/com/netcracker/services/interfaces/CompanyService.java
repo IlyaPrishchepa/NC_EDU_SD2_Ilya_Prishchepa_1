@@ -8,7 +8,8 @@ public interface CompanyService {
 
     Company save(Company company);
     void delete(int id);
-    List<Company> findAll();
+    List<Company> findAll(int page, int size);
     Company findById(int id);
     Company findByName(String name);
+    int getSize();
 }

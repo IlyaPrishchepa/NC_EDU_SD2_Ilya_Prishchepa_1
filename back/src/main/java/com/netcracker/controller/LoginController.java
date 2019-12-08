@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Api
 @RestController
 @RequestMapping("/login")
@@ -33,4 +35,13 @@ public class LoginController {
     public void delete(@PathVariable int id) {
         loginService.delete(id);
     }
+
+    @GetMapping
+    public List<Login> findAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+        return loginService.findAll(pageNo, pageSize);
+    }
+
+    @GetMapping("/size")
+    public int getSize() {
+        return loginService.getSize(); }
 }

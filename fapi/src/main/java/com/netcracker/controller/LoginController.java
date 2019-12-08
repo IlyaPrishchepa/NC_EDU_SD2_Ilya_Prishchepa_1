@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/login")
@@ -29,7 +31,6 @@ public class LoginController {
         return ResponseEntity.ok(loginService.findByEmailAndPassword(email,password));
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping
     public void delete(@PathVariable int id) {
         loginService.delete(id);
@@ -40,4 +41,8 @@ public class LoginController {
         String email = loginService.getEmail(bearerToken);
         return ResponseEntity.ok(loginService.findLoginByEmail(email));
     }
+
+    @GetMapping("/size")
+    public int getSize() {
+        return loginService.getSize(); }
 }

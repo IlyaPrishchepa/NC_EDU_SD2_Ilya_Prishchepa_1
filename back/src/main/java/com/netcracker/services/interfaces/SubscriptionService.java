@@ -9,7 +9,9 @@ public interface SubscriptionService {
 
     Subscription add(Subscription subscription);
     void delete(int id);
-    List<Subscription> findAll();
+    List<Subscription> findAll(int page, int size);
     Subscription findById(int id);
     List<Subscription> findByUserId(int page, int size, int id);
+    int getSize();
+
 }

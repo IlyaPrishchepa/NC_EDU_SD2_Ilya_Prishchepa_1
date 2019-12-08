@@ -53,4 +53,8 @@ public class EWalletServiceImpl implements EWalletService {
                 +"/?ewalletId="+ ewalletId + "&amount=" + amount, Ewallet.class);
     }
 
+    @Override
+    public int getSize(){
+        return restTemplate.getForObject(backendApiProperties.getEWalletUri()+"/size", Integer.class);
+    }
 }

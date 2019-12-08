@@ -1,5 +1,6 @@
 package com.netcracker.controller;
 
+import com.netcracker.entity.Company;
 import com.netcracker.entity.Subscription;
 import com.netcracker.services.implementation.SubscriptionServiceImpl;
 import com.netcracker.services.interfaces.SubscriptionService;
@@ -21,4 +22,13 @@ public class SubscriptionController {
     public List<Subscription> findByUserId(@RequestParam int pageNo, @RequestParam int pageSize, @RequestParam int id) {
         return subscriptionService.findByUserId(pageNo,pageSize,id);
     }
+
+    @GetMapping
+    public List<Subscription> findAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+        return subscriptionService.findAll(pageNo, pageSize);
+    }
+
+    @GetMapping("/size")
+    public int getSize() {
+        return subscriptionService.getSize(); }
 }

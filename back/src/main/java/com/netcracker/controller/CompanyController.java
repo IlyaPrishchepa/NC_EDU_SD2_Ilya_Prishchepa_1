@@ -27,8 +27,8 @@ public class CompanyController {
     }
 
     @GetMapping
-    public List<Company> findAll() {
-        return companyService.findAll();
+    public List<Company> findAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+        return companyService.findAll(pageNo, pageSize);
     }
 
     @GetMapping("/find-by-id/{id}")
@@ -40,5 +40,9 @@ public class CompanyController {
     public Company findByName(@PathVariable String name) {
         return companyService.findByName(name);
     }
+
+    @GetMapping("/size")
+    public int getSize() {
+        return companyService.getSize(); }
 
 }

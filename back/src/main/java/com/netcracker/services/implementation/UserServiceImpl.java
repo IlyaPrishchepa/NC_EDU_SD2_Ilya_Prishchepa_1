@@ -4,6 +4,7 @@ import com.netcracker.entity.User;
 import com.netcracker.repository.UserRepo;
 import com.netcracker.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
-        return (List<User>) userRepo.findAll();
+    public List<User> findAll(int pageNo,int pageSize) {
+        return (List<User>) userRepo.findAll(PageRequest.of(pageNo,pageSize)).getContent();
     }
 
     @Override
@@ -54,5 +55,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByLoginId(int loginId) {
         return userRepo.findUserByLoginId_Id(loginId);
+    }
+
+    @Override
+    public int getSize(){
+        return (int)userRepo.count();
     }
 }

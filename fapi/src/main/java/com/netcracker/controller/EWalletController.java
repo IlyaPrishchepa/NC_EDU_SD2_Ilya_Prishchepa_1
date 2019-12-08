@@ -42,5 +42,8 @@ public class EWalletController {
     @GetMapping()
     public Ewallet replenish(@RequestParam int  ewalletId, @RequestParam int amount) {
         return eWalletService.replenish(ewalletId,amount);}
+    @GetMapping("/size")
+    public int getSize() {
+        return eWalletService.getSize(); }
 
 }

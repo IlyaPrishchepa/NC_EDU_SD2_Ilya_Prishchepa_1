@@ -19,7 +19,6 @@ public class ServicesController {
   public List<Services> getAll(@RequestParam int pageNo, @RequestParam int pageSize) {
     return servicesService.findAll(pageNo,pageSize);}
 
-
   @GetMapping("/size")
   public int getSize() {
     return servicesService.getSize();}

@@ -29,8 +29,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public List<Subscription> findAll() {
-        return (List<Subscription>) subscriptionRepo.findAll();
+    public List<Subscription> findAll(int pageNo,int pageSize) {
+        return (List<Subscription>) subscriptionRepo.
+                findAll(PageRequest.of(pageNo,pageSize)).getContent();
     }
 
     @Override
@@ -41,5 +42,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public List<Subscription> findByUserId(int page, int size, int id) {
         return subscriptionRepo.findSubscriptionByUserId(id, PageRequest.of(page,size));
+    }
+
+    @Override
+    public int getSize(){
+        return (int)subscriptionRepo.count();
     }
 }

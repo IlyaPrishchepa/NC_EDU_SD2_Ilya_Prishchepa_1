@@ -16,7 +16,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service("loginService")
@@ -71,6 +73,12 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
         return new User(login.getEmail(), login.getPassword(), getAuthority(login));
     }
 
+    @Override
+    public List<Login> findAll(int pageNo, int pageSize) {
+        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getLoginUri()
+                +"/?pageSize="+pageSize+"&pageNo="+pageNo, Login[].class));
+    }
+
 
     private Set<SimpleGrantedAuthority>  getAuthority(Login login) {
         Set<SimpleGrantedAuthority> authorities = new HashSet();
@@ -91,5 +99,8 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
         return email;
     }
 
-
+    @Override
+    public int getSize(){
+        return restTemplate.getForObject(backendApiProperties.getLoginUri()+"/size", Integer.class);
+    }
 }

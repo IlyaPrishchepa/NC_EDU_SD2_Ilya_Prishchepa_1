@@ -1,5 +1,6 @@
 package com.netcracker.services.implementation;
 
+import com.netcracker.models.Subscription;
 import com.netcracker.models.User;
 import com.netcracker.property.BackendApiProperties;
 import com.netcracker.services.interfaces.UserService;
@@ -36,8 +37,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findAll() {
-        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getUserUri(), User[].class));
+    public List<User> findAll(int pageNo, int pageSize) {
+        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getUserUri()
+                +"/?pageSize="+pageSize+"&pageNo="+pageNo, User[].class));
     }
 
     @Override
@@ -68,5 +70,10 @@ public class UserServiceImpl implements UserService {
     public User findByLoginId(int loginId) {
         return restTemplate.getForObject(backendApiProperties.getUserUri()
                 +"/find-by-loginId/" + loginId, User.class);
+    }
+
+    @Override
+    public int getSize(){
+        return restTemplate.getForObject(backendApiProperties.getUserUri()+"/size", Integer.class);
     }
 }

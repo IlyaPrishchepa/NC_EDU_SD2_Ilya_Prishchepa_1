@@ -32,8 +32,8 @@ public class EWalletServiceImpl implements EWalletService {
     }
 
     @Override
-    public List<Ewallet> findByLoginID(int id) {
-        return eWalletRepo.findEwalletByLoginId3(id);
+    public List<Ewallet> findByLoginID(int pageNo, int pageSize,int id) {
+        return eWalletRepo.findEwalletByLoginId3(PageRequest.of(pageNo,pageSize),id);
     }
 
     @Override
@@ -42,6 +42,11 @@ public class EWalletServiceImpl implements EWalletService {
          double oldAmount = ewallet.getAmount();
          ewallet.setAmount(oldAmount+amount);
         return eWalletRepo.save(ewallet);
+    }
+
+    @Override
+    public int getSize(){
+        return (int)eWalletRepo.count();
     }
 
 

@@ -4,6 +4,7 @@ import com.netcracker.entity.Company;
 import com.netcracker.repository.CompanyRepo;
 import com.netcracker.services.interfaces.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +28,8 @@ public class CompanyServiceImpl implements CompanyService {
   }
 
   @Override
-  public List<Company> findAll() {
-    return (List<Company>) companyRepo.findAll();
+  public List<Company> findAll(int pageNo, int pageSize) {
+    return (List<Company>) companyRepo.findAll(PageRequest.of(pageNo,pageSize)).getContent();
   }
 
   @Override
@@ -40,5 +41,10 @@ public class CompanyServiceImpl implements CompanyService {
   @Override
   public Company findByName(String name) {
     return companyRepo.findByName(name);
+  }
+
+  @Override
+  public int getSize(){
+    return (int)companyRepo.count();
   }
 }

@@ -21,8 +21,9 @@ public class UserController {
     return userService.findById(id);}
 
   @GetMapping
-  public List<User> getAll() {
-    return userService.findAll();}
+  public List<User> findAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+    return userService.findAll(pageNo, pageSize);
+  }
 
   @GetMapping("/find-by-name/{str}")
   public List<User> findByName(@PathVariable String str) {
@@ -50,4 +51,8 @@ public class UserController {
   public void delete(@PathVariable int id){
     userService.delete(id);
   }
+
+  @GetMapping("/size")
+  public int getSize() {
+    return userService.getSize(); }
 }

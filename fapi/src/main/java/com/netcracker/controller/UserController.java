@@ -2,6 +2,7 @@ package com.netcracker.controller;
 
 import com.netcracker.models.User;
 import com.netcracker.services.implementation.UserServiceImpl;
+import com.netcracker.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,16 +21,26 @@ public class UserController {
         return userService.findById(id);}
 
     @GetMapping
-    public List<User> getAll() {
-        return userService.findAll();}
+    public List<User> findAll(@RequestParam int pageNo, @RequestParam int pageSize) {
+        return userService.findAll(pageNo, pageSize);
+    }
 
-    @GetMapping("/find-by-name/{name}")
-    public List<User> findByName(@PathVariable String name) {
-        return userService.findByName(name);}
+    @GetMapping("/find-by-name/{str}")
+    public List<User> findByName(@PathVariable String str) {
+        return userService.findByName(str);}
 
-    @GetMapping("/find-by-surname/{surname}")
-    public List<User> findBySurname(@PathVariable String surname) {
-        return userService.findBySurname(surname);}
+    @GetMapping("/find-by-surname/{str}")
+    public List<User> findBySurname(@PathVariable String str) {
+        return userService.findBySurname(str);}
+
+    @GetMapping("/find-by-email/{email}")
+    public User findByLoginId(@PathVariable String email) {
+        return userService.findByEmail(email);}
+
+    @GetMapping("/find-by-loginId/{loginId}")
+    public User findByLoginId(@PathVariable int loginId) {
+        return userService.findByLoginId(loginId);
+    }
 
     @PostMapping
     public User add(@RequestBody User user){
@@ -41,13 +52,7 @@ public class UserController {
         userService.delete(id);
     }
 
-    @GetMapping("/find-by-email/{email}")
-    public User findByLoginId(@PathVariable String email) {
-        return userService.findByEmail(email);}
-
-    @GetMapping("/find-by-loginId/{loginId}")
-    public User findByLoginId(@PathVariable int loginId) {
-        return userService.findByLoginId(loginId);
-    }
-
+    @GetMapping("/size")
+    public int getSize() {
+        return userService.getSize(); }
 }

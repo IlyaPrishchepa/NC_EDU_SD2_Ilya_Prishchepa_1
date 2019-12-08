@@ -35,8 +35,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Override
-    public List<Subscription> findAll() {
-        return null;
+    public List<Subscription> findAll(int pageNo, int pageSize) {
+        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getSubscriptionUri()
+                +"/?pageSize="+pageSize+"&pageNo="+pageNo, Subscription[].class));
     }
 
     @Override
@@ -49,7 +50,11 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return Arrays.asList(restTemplate.getForObject(backendApiProperties.getSubscriptionUri()
                 + "/find-by-userId"+"?pageNo=" + pageNo+ "&pageSize="+pageSize
                 + "&id="+id, Subscription[].class));
-
-
     }
+
+    @Override
+    public int getSize(){
+        return restTemplate.getForObject(backendApiProperties.getSubscriptionUri()+"/size", Integer.class);
+    }
+
 }
