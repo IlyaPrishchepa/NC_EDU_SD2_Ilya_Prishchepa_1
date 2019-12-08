@@ -63,4 +63,10 @@ public class UserServiceImpl implements UserService {
         return restTemplate.getForObject(backendApiProperties.getUserUri()
                 +"/find-by-email/" + email, User.class);
     }
+
+    @Override
+    public User findByLoginId(int loginId) {
+        return restTemplate.getForObject(backendApiProperties.getUserUri()
+                +"/find-by-loginId/" + loginId, User.class);
+    }
 }

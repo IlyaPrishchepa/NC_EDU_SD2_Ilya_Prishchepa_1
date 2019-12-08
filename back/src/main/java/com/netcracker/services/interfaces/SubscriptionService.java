@@ -11,4 +11,5 @@ public interface SubscriptionService {
     void delete(int id);
     List<Subscription> findAll();
     Subscription findById(int id);
+    List<Subscription> findByUserId(int page, int size, int id);
 }

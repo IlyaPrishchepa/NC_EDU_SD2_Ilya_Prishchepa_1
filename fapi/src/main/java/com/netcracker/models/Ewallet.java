@@ -10,8 +10,6 @@ public class Ewallet {
     private int id;
     private Integer amount;
     private String numCard;
-    private String date;
-    private String cvv;
     private int loginId3;
 
 }

@@ -3,4 +3,7 @@ export class Token {
   iat: number;
   exp: number;
   scopes: string;
+  id: number;
+  Role: string;
+
 }

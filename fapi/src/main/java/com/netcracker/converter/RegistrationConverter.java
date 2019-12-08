@@ -1,16 +1,21 @@
 package com.netcracker.converter;
 
 import com.netcracker.models.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RegistrationConverter {
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public User splitRegUserIntoUser (RegUser regUser){
         Login login = new Login();
         login.setEmail(regUser.getEmail());
         login.setRole("USER");
-        login.setPassword(regUser.getPassword());
+        login.setPassword(passwordEncoder.encode(regUser.getPassword()));
 
         User user = new User();
         user.setName(regUser.getName());

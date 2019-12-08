@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {RegCompany} from '../../model/company/reg-company';
-import {CompanyService} from '../../../../services/company/company.service';
+import {RegCompany} from '../../../model/company/reg-company';
+import {CompanyService} from '../../../services/company/company.service';
 
 @Component({
   selector: 'app-company-form',

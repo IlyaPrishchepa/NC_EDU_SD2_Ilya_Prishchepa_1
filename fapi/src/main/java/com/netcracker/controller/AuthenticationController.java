@@ -9,13 +9,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("token")
+@RequestMapping("/token")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthenticationController {
 
     @Autowired
@@ -24,7 +22,7 @@ public class AuthenticationController {
     @Autowired
     private JwtTokenProvider jwtTokenUtil;
 
-    @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
+    @PostMapping("/generate-token")
     public ResponseEntity<?> register(@RequestBody Login login) {
 
         final Authentication authentication = authenticationManager.authenticate(

@@ -2,14 +2,12 @@ package com.netcracker.controller;
 
 import com.netcracker.models.Login;
 import com.netcracker.services.implementation.LoginServiceImpl;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
-@Api
 @RestController
 @RequestMapping("/login")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,5 +33,11 @@ public class LoginController {
     @DeleteMapping
     public void delete(@PathVariable int id) {
         loginService.delete(id);
+    }
+
+    @GetMapping("/get-current-login")
+    public ResponseEntity<Login> getCurrentLogin(@RequestHeader(value = "Authorization", required = false) String bearerToken) {
+        String email = loginService.getEmail(bearerToken);
+        return ResponseEntity.ok(loginService.findLoginByEmail(email));
     }
 }

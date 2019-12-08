@@ -2,11 +2,12 @@ package com.netcracker.controller;
 
 import com.netcracker.models.Ewallet;
 import com.netcracker.services.implementation.EWalletServiceImpl;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@Api
+import java.util.List;
+
+
 @RestController
 @RequestMapping("/ewallet")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -31,5 +32,15 @@ public class EWalletController {
         return eWalletService.findById(id);
 
     }
+
+    @GetMapping("/find-by-loginId/{id}")
+    public List<Ewallet> findByLoginId(@PathVariable int id) {
+        return eWalletService.findByLoginID(id);
+    }
+
+
+    @GetMapping()
+    public Ewallet replenish(@RequestParam int  ewalletId, @RequestParam int amount) {
+        return eWalletService.replenish(ewalletId,amount);}
 
 }

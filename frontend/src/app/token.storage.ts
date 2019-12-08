@@ -5,6 +5,7 @@ const TOKEN_KEY = 'AuthToken';
 const LOGIN_KEY = 'Login';
 const ROLE_KEY = 'Role';
 
+
 @Injectable()
 export class TokenStorage {
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RegUser} from "../model/reg-user";
+import {RegUser} from "../../../model/user/reg-user";
 
 @Component({
   selector: 'app-user-table-form',

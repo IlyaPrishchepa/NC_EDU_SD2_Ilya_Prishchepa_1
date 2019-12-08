@@ -8,6 +8,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Service
 public class EWalletServiceImpl implements EWalletService {
 
@@ -37,4 +40,17 @@ public class EWalletServiceImpl implements EWalletService {
         return restTemplate.getForObject(backendApiProperties.getEWalletUri()
                 +"/find-by-id/" + id, Ewallet.class);
     }
+
+    @Override
+    public List<Ewallet> findByLoginID(int id) {
+        return Arrays.asList(restTemplate.getForObject(backendApiProperties.getEWalletUri()
+                +"/find-by-loginId/" + id, Ewallet[].class));
+    }
+
+    @Override
+    public Ewallet replenish(int ewalletId, int amount) {
+        return restTemplate.getForObject(backendApiProperties.getEWalletUri()
+                +"/?ewalletId="+ ewalletId + "&amount=" + amount, Ewallet.class);
+    }
+
 }

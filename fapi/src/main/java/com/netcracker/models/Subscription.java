@@ -12,8 +12,8 @@ public class Subscription {
     private int id;
     private String status;
     private Date startDate;
-    private Ewallet ewalletId;
-    private Services servicesId;
-    private User userId;
+    private int ewalletId;
+    private int servicesId;
+    private int userId;
 
 }

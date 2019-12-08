@@ -1,5 +1,7 @@
 package com.netcracker.services.implementation;
 
+import com.netcracker.config.Constants;
+import com.netcracker.config.JwtTokenProvider;
 import com.netcracker.models.Login;
 import com.netcracker.property.BackendApiProperties;
 import com.netcracker.services.interfaces.LoginService;
@@ -25,6 +27,9 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
 
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
 
 
     private final RestTemplate restTemplate;
@@ -72,4 +77,19 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
         authorities.add(new SimpleGrantedAuthority(login.getRole()));
         return authorities;
     }
+
+
+
+    public String getEmail(String bearerToken) {
+        String email = null;
+        String authToken = bearerToken.replace(Constants.TOKEN_PREFIX, "");
+        try {
+            email = jwtTokenProvider.getUsernameFromToken(authToken);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return email;
+    }
+
+
 }

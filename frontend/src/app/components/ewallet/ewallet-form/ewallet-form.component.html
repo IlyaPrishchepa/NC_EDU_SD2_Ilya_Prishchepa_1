@@ -1,5 +1,5 @@
 <div class="container my-4">
-  <h1 class="text-center">Yor e-wallet</h1>
+  <h1 class="text-center">Your e-wallet</h1>
   <div class="text-right">
     <button class="btn btn-primary btn-round btn-fill" (click)="openModal(content)">Add ewallet</button>
   </div>
@@ -13,10 +13,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let ewallet of ewallets">
-      <td> {{ ewallet.numCard | number }}</td>
+    <tr *ngFor="let ewallet of ewallets; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td> {{ ewallet.numCard  }}</td>
       <td>{{ ewallet.amount | number }}</td>
-      <button type="button" class="btn btn-light">Chose</button>
+      <button type="button" class="btn btn-light" (click)="openModal2(content2,ewallet)">Chose</button>
     </tr>
     </tbody>
   </table>
@@ -60,7 +61,8 @@
           <div class="form-group">
             <label>Credit Card Number</label>
             <div class="input-group">
-              <input class="form-control" type="text" placeholder="0000 0000 0000 0000" autocomplete="email">
+              <input class="form-control" type="text" placeholder="0000 0000 0000 0000"
+                     [(ngModel)]="ewallet.numCard">
               <div class="input-group-append">
                                         <span class="input-group-text">
                                             <i class="mdi mdi-credit-card"></i>
@@ -110,13 +112,35 @@
     </div>
     <div class="card-footer">
       <div class="text-center">
-        <button type="button" class="btn btn-success">Confirm</button>
+        <button type="button" class="btn btn-success" (click)="create()">Confirm</button>
       </div>
     </div>
   </div>
 </ng-template>
 
-
+<ng-template #content2 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Replenish e-wallet account</h4>
+    <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="form-group">
+        <label>Enter amount</label>
+        <input class="form-control" type="text"  placeholder="0$" [(ngModel)]="amountOne" name="amountOne">
+        </div>
+        <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true" (click)="amount()">Amount</a>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
 
 
 

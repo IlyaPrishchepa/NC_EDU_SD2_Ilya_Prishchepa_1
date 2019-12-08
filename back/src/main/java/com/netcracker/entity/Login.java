@@ -25,9 +25,8 @@ public class Login {
     private String password;
 
     @Basic
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "role",columnDefinition = "varchar(255) default 'USER'")
-    private Role role;
+    private String role;
 
     @OneToOne(mappedBy = "loginId2", cascade = CascadeType.ALL)
     @JsonIgnore

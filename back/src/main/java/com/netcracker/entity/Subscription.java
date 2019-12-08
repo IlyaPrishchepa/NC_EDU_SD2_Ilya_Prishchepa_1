@@ -19,10 +19,8 @@ public class Subscription {
     private int id;
 
     @Basic
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "status",columnDefinition =
-            "varchar(255) default 'BLOCKED'")
-    private Status status;
+    @Column(name = "status")
+    private String status;
 
     @Basic
     @CreatedDate
@@ -30,16 +28,20 @@ public class Subscription {
     @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
 
-    @ManyToOne
-    @JoinColumn(name = "ewallet_id", referencedColumnName = "id")
-    private Ewallet ewalletId;
+    @Basic
+    @Column(name = "ewallet_id")
+    private int ewalletId;
 
-    @ManyToOne
+    @Basic
+    @Column(name = "services_id")
+    private int servicesId;
+
+/*    @ManyToOne
     @JoinColumn(name = "services_id", referencedColumnName = "id")
-    private Services servicesId;
+    private Services servicesId;*/
 
-    @ManyToOne( cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User userId;
+    @Basic
+    @Column(name = "user_id")
+    private int userId;
 
 }

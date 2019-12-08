@@ -4,10 +4,8 @@ import com.netcracker.models.Category;
 import com.netcracker.services.implementation.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 import java.util.List;
 
-@Api
 @RestController
 @RequestMapping("/category")
 @CrossOrigin(origins = "http://localhost:4200")

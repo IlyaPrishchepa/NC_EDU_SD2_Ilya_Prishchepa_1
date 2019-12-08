@@ -2,13 +2,11 @@ package com.netcracker.controller;
 
 import com.netcracker.models.User;
 import com.netcracker.services.implementation.UserServiceImpl;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(origins = "http://localhost:4200")
@@ -46,5 +44,10 @@ public class UserController {
     @GetMapping("/find-by-email/{email}")
     public User findByLoginId(@PathVariable String email) {
         return userService.findByEmail(email);}
+
+    @GetMapping("/find-by-loginId/{loginId}")
+    public User findByLoginId(@PathVariable int loginId) {
+        return userService.findByLoginId(loginId);
+    }
 
 }

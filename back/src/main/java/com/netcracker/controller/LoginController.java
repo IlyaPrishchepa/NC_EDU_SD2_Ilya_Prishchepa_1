@@ -2,9 +2,11 @@ package com.netcracker.controller;
 
 import com.netcracker.entity.Login;
 import com.netcracker.services.implementation.LoginServiceImpl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@Api
 @RestController
 @RequestMapping("/login")
 public class LoginController {

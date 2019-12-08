@@ -11,8 +11,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let subscription of subscriptions">
-
+    <tr *ngFor="let subscription of subscriptionsUser;index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td> {{ subscription.servicesId  }}</td>
+      <td>{{ subscription.startDate}}</td>
+      <button type="button" class="btn btn-light" (click)="openModal2(content2,ewallet)">Chose</button>
+    </tr>
     </tbody>
   </table>
 

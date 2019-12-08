@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from '../../../../services/reg-user/user.service';
-import { RegUser } from '../../../user/model/reg-user';
+import {UserService} from '../../../services/reg-user/user.service';
+import { RegUser } from '../../../model/user/reg-user';
 import {Subscription} from "rxjs";
+import {Role} from "../../../model/enums/role";
 
 
 @Component({
@@ -16,6 +17,7 @@ export class UserFormComponent implements  OnInit{
   regUser: RegUser = {loginid: {}} as RegUser;
 
   private subscriptions: Subscription[] = [];
+  private role: Role.USER;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +25,7 @@ export class UserFormComponent implements  OnInit{
     private userService: UserService) {
 
     this.regUser = new RegUser();
+    this.regUser.role = this.role;
   }
 
   signIn(): void {
@@ -30,7 +33,7 @@ export class UserFormComponent implements  OnInit{
       this.userService.save(this.regUser).subscribe(data => {
           this.regUser = data;
           alert('Ok');
-          this.router.navigateByUrl('login');
+          this.router.navigateByUrl('user-home');
         },
         error => {
           alert('Error xxx');

@@ -2,15 +2,15 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { UserFormComponent } from './components/registration/form/user-form/user-form.component';
+import { UserFormComponent } from './components/registration/user-form/user-form.component';
 import { UserService } from './services/reg-user/user.service';
 import { EwalletFormComponent } from './components/ewallet/ewallet-form/ewallet-form.component';
 import {NgbDropdownModule, NgbModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import { CompanyFormComponent } from './components/registration/form/company-form/company-form.component';
+import { CompanyFormComponent } from './components/registration/company-form/company-form.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
-import { UserHomeFormComponent } from './components/home/form/user-home-form/user-home-form.component';
+import { UserHomeFormComponent } from './components/home/user-home-form/user-home-form.component';
 import { UserRegistrationPageFormComponent } from './pages/user-registration-page-form/user-registration-page-form.component';
 import { HeaderFormComponent } from './components/header/header-form/header-form.component';
 import { CompanyRegistrationPageFormComponent } from './pages/company-registration-page-form/company-registration-page-form.component';
@@ -25,11 +25,15 @@ import { HeaderUserFormComponent } from './components/header/header-user-form/he
 import { SubscriptionFormComponent } from './components/subscription/subscription-form/subscription-form.component';
 import { UserSubscriptionPageFormComponent } from './pages/user-subscription-page-form/user-subscription-page-form.component';
 import { EwalletPageFormComponent } from './pages/ewallet-page-form/ewallet-page-form.component';
-import { AdminHomeFormComponent } from './components/home/form/admin-home-form/admin-home-form.component';
+import { AdminHomeFormComponent } from './components/home/admin-home-form/admin-home-form.component';
 import { AdminHomePageFormComponent } from './pages/admin-home-page-form/admin-home-page-form.component';
 import { CategoryFormComponent } from './components/category/category-form/category-form.component';
 import { CategoryPageFormComponent } from './pages/category-page-form/category-page-form.component';
+import {Interceptor} from "./app.interceptor";
 import {TokenStorage} from "./token.storage";
+ import {LoginService} from "./services/login/login.service";
+
+
 
 @NgModule({
   declarations: [
@@ -67,7 +71,15 @@ import {TokenStorage} from "./token.storage";
     NgbPaginationModule,
     NgbModule
   ],
-  providers: [UserService,TokenStorage],
+  providers: [UserService,
+    TokenStorage,
+    LoginService,
+    TokenStorage,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

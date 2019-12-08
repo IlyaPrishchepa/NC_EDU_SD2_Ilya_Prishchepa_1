@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {RegUser} from "../../user/model/reg-user";
+import {RegUser} from "../../../model/user/reg-user";
+import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
+import {LoginService} from "../../../services/login/login.service";
+import {TokenStorage} from "../../../token.storage";
+import {Login} from "../../../model/login/login";
 
 @Component({
   selector: 'app-login-form',
@@ -8,14 +13,26 @@ import {RegUser} from "../../user/model/reg-user";
 })
 export class LoginFormComponent implements OnInit {
 
-  public user: RegUser = new RegUser();
+  public login: Login = new Login();
 
-  public _logIn() {
-    console.log(this.user);
+  private subscriptions: Subscription[] = [];
+
+  constructor(private router: Router,
+              private loginService: LoginService,
+              private tokenStorage: TokenStorage) { }
+
+  public logIn(): void {
+    this.subscriptions.push(
+    this.loginService.authenticate(this.login.email, this.login.password).subscribe(
+      data => {
+        this.tokenStorage.saveToken(data.token);
+        this.router.navigateByUrl('user-home');
+      },
+      error => {
+        console.log(error);
+      })
+  );
   }
-
-  constructor() { }
-
   ngOnInit() {
   }
 

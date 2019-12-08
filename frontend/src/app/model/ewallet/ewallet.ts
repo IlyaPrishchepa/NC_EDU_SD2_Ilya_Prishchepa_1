@@ -1,7 +1,6 @@
 export class Ewallet {
+  id?: number;
   amount?: number;
   numCard?: string;
-  date?: string;
-  cvv?: string;
-  loginId3?: string;
+  loginId3?: number;
 }

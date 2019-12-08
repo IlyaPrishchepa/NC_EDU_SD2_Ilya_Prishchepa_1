@@ -26,10 +26,6 @@ public class User {
     @Column(name = "surname",nullable = false)
     private String surname;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Collection<Subscription> subscription;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "login_id", referencedColumnName = "id")
     private Login loginId;

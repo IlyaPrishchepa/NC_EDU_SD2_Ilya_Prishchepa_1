@@ -4,6 +4,9 @@ import com.netcracker.entity.Subscription;
 import com.netcracker.repository.SubscriptionRepo;
 import com.netcracker.services.interfaces.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +36,10 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public Subscription findById(int id) {
         return subscriptionRepo.findById(id).get();
+    }
+
+    @Override
+    public List<Subscription> findByUserId(int page, int size, int id) {
+        return subscriptionRepo.findSubscriptionByUserId(id, PageRequest.of(page,size));
     }
 }

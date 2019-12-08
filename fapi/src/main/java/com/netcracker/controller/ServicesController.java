@@ -3,15 +3,11 @@ import com.netcracker.models.Services;
 import com.netcracker.services.implementation.CategoryServiceImpl;
 import com.netcracker.services.implementation.CompanyServiceImpl;
 import com.netcracker.services.implementation.ServicesServiceImpl;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
-
-@Api
 @RestController
 @RequestMapping("/services")
 @CrossOrigin(origins = "http://localhost:4200")

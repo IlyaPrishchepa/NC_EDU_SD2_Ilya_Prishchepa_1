@@ -25,19 +25,7 @@ public class Ewallet {
     private String numCard;
 
     @Basic
-    @Column(name = "date",nullable = false)
-    private String date;
-
-    @Basic
-    @Column(name = "cvv",nullable = false)
-    private String cvv;
-
-    @Basic
     @Column(name = "login_id_3")
     private int loginId3;
-
-    @OneToMany(mappedBy = "ewalletId", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Collection<Subscription> subscription;
 
 }

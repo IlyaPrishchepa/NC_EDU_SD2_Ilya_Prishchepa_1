@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ServicesService} from "../../../services/service/services.service";
-import {Service} from "../model/service";
+import {Service} from "../../../model/services/service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({

@@ -2,11 +2,13 @@ package com.netcracker.controller;
 
 import com.netcracker.entity.Category;
 import com.netcracker.services.implementation.CategoryServiceImpl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
