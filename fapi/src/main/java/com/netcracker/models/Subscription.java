@@ -10,10 +10,10 @@ import java.util.Date;
 public class Subscription {
 
     private int id;
-    private String status;
+    private boolean status;
     private Date startDate;
     private int ewalletId;
-    private int servicesId;
+    private Services servicesId;
     private int userId;
 
 }

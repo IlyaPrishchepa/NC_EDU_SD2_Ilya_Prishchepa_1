@@ -1,9 +1,11 @@
+import {Service} from "../services/service";
+
 export class SubscriptionUser {
   id?:number;
   status?:string;
   startDate?:Date;
   ewalletId?:number;
-  servicesId?:number;
+  servicesId?:Service;
   userId?:number;
 
 

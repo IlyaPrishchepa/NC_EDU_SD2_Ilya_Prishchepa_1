@@ -1,6 +1,5 @@
 package com.netcracker.entity;
 
-import com.netcracker.entity.enums.Status;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -30,15 +29,11 @@ public class Subscription {
 
     @Basic
     @Column(name = "ewallet_id")
-    private int ewalletId;
+    private boolean ewalletId;
 
-    @Basic
-    @Column(name = "services_id")
-    private int servicesId;
-
-/*    @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "services_id", referencedColumnName = "id")
-    private Services servicesId;*/
+    private Services servicesId;
 
     @Basic
     @Column(name = "user_id")

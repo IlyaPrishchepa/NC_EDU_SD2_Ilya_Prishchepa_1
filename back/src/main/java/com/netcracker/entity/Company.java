@@ -25,8 +25,5 @@ public class Company {
     @JoinColumn(name = "login_id_2", referencedColumnName = "id")
     private Login loginId2;
 
-    @OneToMany(mappedBy = "companyId", cascade = CascadeType.ALL)
-    @JsonIgnore
-    private Collection<Services> services;
 
 }

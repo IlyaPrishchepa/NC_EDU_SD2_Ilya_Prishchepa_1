@@ -25,13 +25,12 @@ public class Services {
     private double price;
 
     @Basic
-    @Column(name = "description",columnDefinition =
-            "varchar(255) default 'The description is absent'")
+    @Column(name = "description")
     private String description;
 
-    @Basic
-    @Column(name = "category_id")
-    private int categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    private Category categoryId;
 
     @Basic
     @Column(name = "company_id")
