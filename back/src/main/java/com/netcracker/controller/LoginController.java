@@ -36,7 +36,7 @@ public class LoginController {
         loginService.delete(id);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public List<Login> findAll(@RequestParam int pageNo, @RequestParam int pageSize) {
         return loginService.findAll(pageNo, pageSize);
     }

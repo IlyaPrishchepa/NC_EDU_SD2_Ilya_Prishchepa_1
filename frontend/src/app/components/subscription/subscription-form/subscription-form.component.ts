@@ -7,6 +7,8 @@ import {SubscriptionUser} from "../../../model/subscriptionUser/subscriptionUser
 import {LoginService} from "../../../services/login/login.service";
 import {UserService} from "../../../services/reg-user/user.service";
 import {RegUser} from "../../../model/user/reg-user";
+import {EwalletService} from "../../../services/ewallet/ewallet.service";
+import {Ewallet} from "../../../model/ewallet/ewallet";
 
 @Component({
   selector: 'app-subscription-form',
@@ -45,7 +47,8 @@ export class SubscriptionFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadLogin()
+    this.loadLogin();
+    this. getSubscriptionSize();
   }
 
   private loadLogin(): void {
@@ -75,4 +78,11 @@ export class SubscriptionFormComponent implements OnInit {
     this.page=pageNum
     this.loadSubscription();
   }
+
+  getSubscriptionSize(){
+    this.subscriptionService.getSize().subscribe
+    ((size:number)=>{this.collectionSize = size});
+  }
+
+
 }

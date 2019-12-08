@@ -76,7 +76,7 @@ public class LoginServiceImpl implements LoginService, UserDetailsService {
     @Override
     public List<Login> findAll(int pageNo, int pageSize) {
         return Arrays.asList(restTemplate.getForObject(backendApiProperties.getLoginUri()
-                +"/?pageSize="+pageSize+"&pageNo="+pageNo, Login[].class));
+                +"/findAll?pageSize="+pageSize+"&pageNo="+pageNo, Login[].class));
     }
 
 

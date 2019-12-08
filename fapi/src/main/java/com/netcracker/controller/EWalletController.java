@@ -33,12 +33,10 @@ public class EWalletController {
 
     }
 
-    @GetMapping("/find-by-loginId/{id}")
-    public List<Ewallet> findByLoginId(@PathVariable int id) {
-        return eWalletService.findByLoginID(id);
+    @GetMapping("/find-by-loginId")
+    public List<Ewallet> findByLoginId(@RequestParam int pageNo, @RequestParam int pageSize,@RequestParam int id) {
+        return eWalletService.findByLoginID(pageNo-1,pageSize,id);
     }
-
-
     @GetMapping()
     public Ewallet replenish(@RequestParam int  ewalletId, @RequestParam int amount) {
         return eWalletService.replenish(ewalletId,amount);}

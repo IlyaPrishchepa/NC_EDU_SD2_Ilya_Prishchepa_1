@@ -15,6 +15,10 @@ import {LoginService} from "../../../services/login/login.service";
 })
 export class EwalletFormComponent implements OnInit {
 
+  public page:number;
+  public pageSize: number = 6;
+  public collectionSize: number;
+
   public ewallet: Ewallet = new Ewallet();
   public ewallets: Ewallet[] = [];
   public selectedEwallet: Ewallet;
@@ -33,6 +37,8 @@ export class EwalletFormComponent implements OnInit {
 
   ngOnInit() {
     this.loadLogin();
+    this.page = 1;
+    this.getSize();
   }
 
   public create(): void {
@@ -61,7 +67,7 @@ export class EwalletFormComponent implements OnInit {
 
   private loadWallets(): void {
     this.subscriptions.push(
-      this.ewalletService.getByLoginID(this.currentLogin.id).subscribe(wallets => {
+      this.ewalletService.getByLoginID(this.page,this.pageSize,this.currentLogin.id).subscribe(wallets => {
         this.ewallets = wallets as Ewallet[];
       })
     )
@@ -81,10 +87,20 @@ export class EwalletFormComponent implements OnInit {
     this.subscriptions.push(
       this.ewalletService.replenish(this.selectedEwallet.id, this.amountOne)
         .subscribe((ewallet: Ewallet) => {
-          this.ewallet = ewallet
+          this.ewallet = ewallet;
           this.loadWallets();
         })
     )
+  }
+
+  getSize(){
+    this.ewalletService.getSize().subscribe
+    ((size:number)=>{this.collectionSize = size});
+  }
+
+  onPageChanged(pageNum){
+    this.page=pageNum;
+    this.loadWallets();
   }
 
 }

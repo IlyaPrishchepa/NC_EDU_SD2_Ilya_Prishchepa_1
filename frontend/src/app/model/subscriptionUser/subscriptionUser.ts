@@ -2,7 +2,7 @@ import {Service} from "../services/service";
 
 export class SubscriptionUser {
   id?:number;
-  status?:string;
+  status?:boolean;
   startDate?:Date;
   ewalletId?:number;
   servicesId?:Service;

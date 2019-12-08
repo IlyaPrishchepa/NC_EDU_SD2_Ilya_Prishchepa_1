@@ -48,7 +48,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     @Override
     public List<Subscription> findByUserId(int pageNo, int pageSize, int id) {
         return Arrays.asList(restTemplate.getForObject(backendApiProperties.getSubscriptionUri()
-                + "/find-by-userId"+"?pageNo=" + pageNo+ "&pageSize="+pageSize
+                + "/find-by-userId?pageNo=" + pageNo+ "&pageSize="+pageSize
                 + "&id="+id, Subscription[].class));
     }
 

@@ -42,9 +42,9 @@ public class EWalletServiceImpl implements EWalletService {
     }
 
     @Override
-    public List<Ewallet> findByLoginID(int id) {
+    public List<Ewallet> findByLoginID(int pageNo, int pageSize, int id) {
         return Arrays.asList(restTemplate.getForObject(backendApiProperties.getEWalletUri()
-                +"/find-by-loginId/" + id, Ewallet[].class));
+                +"/find-by-loginId?pageNo="+pageNo+"&pageSize="+pageSize+"&id="+id, Ewallet[].class));
     }
 
     @Override

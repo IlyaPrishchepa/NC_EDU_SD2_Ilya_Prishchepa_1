@@ -19,4 +19,8 @@ export class SubscriptionService {
     return this.http.get<SubscriptionUser[]>(this.subscriptionUrl+"/find-by-userId?pageNo="+pageSize+"&pageSize="
       + pageNo + "&id="+id);
   }
+
+  public getSize() {
+    return this.http.get<number>(this.subscriptionUrl + '/size');
+  }
 }

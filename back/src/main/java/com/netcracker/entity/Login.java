@@ -1,7 +1,6 @@
 package com.netcracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.netcracker.entity.enums.Role;
 import lombok.Data;
 
 import javax.persistence.*;

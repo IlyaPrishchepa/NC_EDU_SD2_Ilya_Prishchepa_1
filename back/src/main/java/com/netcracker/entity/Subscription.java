@@ -19,7 +19,7 @@ public class Subscription {
 
     @Basic
     @Column(name = "status")
-    private String status;
+    private boolean status;
 
     @Basic
     @CreatedDate
@@ -29,7 +29,7 @@ public class Subscription {
 
     @Basic
     @Column(name = "ewallet_id")
-    private boolean ewalletId;
+    private int ewalletId;
 
     @ManyToOne
     @JoinColumn(name = "services_id", referencedColumnName = "id")

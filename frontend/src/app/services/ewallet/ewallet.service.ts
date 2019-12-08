@@ -8,6 +8,7 @@ import {Service} from "../../model/services/service";
   providedIn: 'root'
 })
 export class EwalletService {
+
   private ewalletUrl: string;
 
   constructor(private http: HttpClient) {
@@ -17,12 +18,15 @@ export class EwalletService {
     return this.http.post<any>(this.ewalletUrl, ewallet);
   }
 
-  public getByLoginID(id: number): Observable<Ewallet[]> {
-    return this.http.get<Ewallet[]>(this.ewalletUrl + '/find-by-loginId/' + id);
+  public getByLoginID(page: number, size: number,id: number): Observable<Ewallet[]> {
+    return this.http.get<Ewallet[]>(this.ewalletUrl + '/find-by-loginId?pageNo=' + page + '&pageSize=' + size +'&id='+id);
   }
 
   public replenish(ewalletId: number, amount:number){
     return this.http.get<Ewallet>(this.ewalletUrl + '?ewalletId=' + ewalletId + '&amount=' + amount );
+  }
 
+  public getSize() {
+    return this.http.get<number>(this.ewalletUrl + '/size');
   }
 }
