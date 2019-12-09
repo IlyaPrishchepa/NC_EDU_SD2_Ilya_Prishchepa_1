@@ -26,7 +26,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public Subscription add(Subscription subscription) {
-        return null;
+        return restTemplate.postForObject(backendApiProperties.getSubscriptionUri(), subscription, Subscription.class);
     }
 
     @Override

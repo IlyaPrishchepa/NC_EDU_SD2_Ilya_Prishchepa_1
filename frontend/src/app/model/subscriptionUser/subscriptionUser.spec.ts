@@ -1,7 +1,7 @@
-import { Subscription } from './subscriptionUser';
+import { SubscriptionUser } from './subscriptionUser';
 
-describe('Subscription', () => {
+describe('SubscriptionUser', () => {
   it('should create an instance', () => {
-    expect(new Subscription()).toBeTruthy();
+    expect(new SubscriptionUser()).toBeTruthy();
   });
 });

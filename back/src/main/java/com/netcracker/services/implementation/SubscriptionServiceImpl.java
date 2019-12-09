@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SubscriptionServiceImpl implements SubscriptionService {
@@ -20,7 +20,13 @@ public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Override
     public Subscription add(Subscription subscription) {
-        return subscriptionRepo.save(subscription);
+        if (subscription.getStartDate() == null){
+            Date date = new Date();
+            subscription.setStartDate(date);
+            return subscriptionRepo.save(subscription);
+        }else{
+            return null;
+        }
     }
 
     @Override

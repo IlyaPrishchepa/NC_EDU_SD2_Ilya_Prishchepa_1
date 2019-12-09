@@ -1,0 +1,30 @@
+<h1 class="text-center">{{serviceGet.price}}$</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Number card</th>
+    <th scope="col">Balance</th>
+    <th scope="col">Replenish</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let ewallet of ewallets; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td> {{ ewallet.numCard  }}</td>
+    <td>{{ ewallet.id | number }}</td>
+    <button type="button" class="btn btn-light" (click)="subscribe(ewallet.id)">Chose</button>
+  </tr>
+  </tbody>
+</table>
+
+<ngb-pagination
+  class="d-flex justify-content-center"
+  [collectionSize]="collectionSize"
+  [pageSize]="pageSize"
+  [(page)]="page"
+  [boundaryLinks]="true"
+  (pageChange)="onPageChanged($event)">
+</ngb-pagination>
+
+

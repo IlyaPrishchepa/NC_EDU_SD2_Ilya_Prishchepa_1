@@ -15,6 +15,11 @@ public class SubscriptionController {
     @Autowired
     private SubscriptionService subscriptionService;
 
+    @PostMapping
+    public Subscription add(@RequestBody Subscription subscription) {
+        return subscriptionService.add(subscription);
+    }
+
     @GetMapping("/find-by-userId")
     public List<Subscription> findByUserId(@RequestParam int pageNo, @RequestParam int pageSize, @RequestParam int id) {
         return subscriptionService.findByUserId(pageNo-1,pageSize,id);

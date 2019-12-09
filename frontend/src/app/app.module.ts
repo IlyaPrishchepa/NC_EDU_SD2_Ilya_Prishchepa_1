@@ -32,6 +32,7 @@ import { CategoryPageFormComponent } from './pages/category-page-form/category-p
 import {Interceptor} from "./app.interceptor";
 import {TokenStorage} from "./token.storage";
  import {LoginService} from "./services/login/login.service";
+import { SubscribeFormComponent } from './components/subscription/subscribe-form/subscribe-form.component';
 
 
 
@@ -60,7 +61,8 @@ import {TokenStorage} from "./token.storage";
     AdminHomeFormComponent,
     AdminHomePageFormComponent,
     CategoryFormComponent,
-    CategoryPageFormComponent
+    CategoryPageFormComponent,
+    SubscribeFormComponent
   ],
   imports: [
     BrowserModule,

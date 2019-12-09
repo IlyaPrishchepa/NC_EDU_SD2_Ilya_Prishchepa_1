@@ -8,5 +8,4 @@ export class SubscriptionUser {
   servicesId?:Service;
   userId?:number;
 
-
 }

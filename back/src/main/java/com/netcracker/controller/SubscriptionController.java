@@ -31,4 +31,10 @@ public class SubscriptionController {
     @GetMapping("/size")
     public int getSize() {
         return subscriptionService.getSize(); }
+
+    @PostMapping
+    public Subscription add(@RequestBody Subscription subscription) {
+        return subscriptionService.add(subscription);
+    }
+
 }

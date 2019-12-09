@@ -14,8 +14,8 @@
     <tr *ngFor="let subscription of subscriptionsUser;index as i">
       <th scope="row">{{ i + 1 }}</th>
       <td> {{ subscription.servicesId.name}}</td>
-      <td>{{ subscription.startDate }}</td>
-      <td>{{ subscription.ewalletId }}</td>
+      <td>{{ subscription.startDate| date: 'yyyy-MM-dd' }}</td>
+      <td>{{ subscription.servicesId.price }}</td>
       <td>{{ subscription.status}}</td>
     </tr>
     </tbody>
