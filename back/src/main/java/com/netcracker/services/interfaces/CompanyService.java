@@ -12,4 +12,5 @@ public interface CompanyService {
     Company findById(int id);
     Company findByName(String name);
     int getSize();
+    Company findByLoginId(int loginId);
 }

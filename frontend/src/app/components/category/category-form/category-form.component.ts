@@ -44,7 +44,7 @@ export class CategoryFormComponent implements OnInit {
   }
 
   onPageChanged(pageNum) {
-    this.page = pageNum
+    this.page = pageNum;
     this.getCategory();
   }
 

@@ -41,6 +41,13 @@ public class ServicesServiceImpl implements ServicesService {
             +"/?pageSize="+pageSize+"&pageNo="+pageNo, Services[].class));
   }
 
+  @Override
+  public List<Services> findByCompanyId(int pageNo, int pageSize, int id) {
+    return Arrays.asList(restTemplate.getForObject(backendApiProperties.getServicesUri()
+            + "/find-by-companyId?pageNo=" + pageNo+ "&pageSize="+pageSize
+            + "&id="+id, Services[].class));
+  }
+
 
   @Override
   public Services findByName(String name) {

@@ -44,8 +44,9 @@ export class ServicesFormComponent implements OnInit {
 
   openModal(content, service) {
     this.selectedService = service;
-    const modalRef = this.modalService.open(content);
+    this.modalService.open(content);
   }
+
 
 
 }

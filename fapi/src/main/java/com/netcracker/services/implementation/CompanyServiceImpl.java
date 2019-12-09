@@ -55,4 +55,10 @@ public class CompanyServiceImpl implements CompanyService {
     public int getSize(){
         return restTemplate.getForObject(backendApiProperties.getCompanyUri()+"/size", Integer.class);
     }
+
+    @Override
+    public Company findByLoginId(int loginId) {
+        return restTemplate.getForObject(backendApiProperties.getCompanyUri()
+                +"/find-by-loginId/" + loginId, Company.class);
+    }
 }

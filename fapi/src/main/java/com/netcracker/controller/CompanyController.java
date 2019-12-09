@@ -45,5 +45,9 @@ public class CompanyController {
     public int getSize() {
         return companyService.getSize(); }
 
+    @GetMapping("/find-by-loginId/{loginId}")
+    public Company findByLoginId(@PathVariable int loginId) {
+        return companyService.findByLoginId(loginId);
+    }
 
 }

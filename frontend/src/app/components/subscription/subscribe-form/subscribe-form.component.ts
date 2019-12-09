@@ -88,6 +88,7 @@ export class SubscribeFormComponent implements OnInit {
     this.initializeSub(id);
       this.subscriptionService.add(this.subscriptionUser)
         .subscribe(() => {})
+    this.closeModal();
   }
 
 /*
@@ -104,5 +105,9 @@ export class SubscribeFormComponent implements OnInit {
   onPageChanged(pageNum){
     this.page=pageNum;
     this.loadWallets();
+  }
+
+  closeModal(): void {
+    this.modalService.dismissAll();
   }
 }

@@ -32,6 +32,11 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
     @Override
+    public List<Services> findByCompanyId(int page, int size, int id) {
+        return servicesRepo.findServicesByCompanyId(id, PageRequest.of(page,size));
+    }
+
+    @Override
     public Services findByName(String name) {
         return servicesRepo.findByName(name);
     }

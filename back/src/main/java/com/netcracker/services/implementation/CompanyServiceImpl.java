@@ -47,4 +47,10 @@ public class CompanyServiceImpl implements CompanyService {
   public int getSize(){
     return (int)companyRepo.count();
   }
+
+  @Override
+  public Company findByLoginId(int loginId) {
+    return companyRepo.findCompanyByLoginId2_Id(loginId);
+  }
+
 }

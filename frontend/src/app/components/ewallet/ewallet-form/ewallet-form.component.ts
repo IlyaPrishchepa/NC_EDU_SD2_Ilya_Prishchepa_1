@@ -4,7 +4,6 @@ import {Ewallet} from '../../../model/ewallet/ewallet';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Subscription} from "rxjs";
 import {Login} from "../../../model/login/login";
-import {Service} from "../../../model/services/service";
 import {TokenStorage} from "../../../token.storage";
 import {LoginService} from "../../../services/login/login.service";
 
@@ -45,8 +44,8 @@ export class EwalletFormComponent implements OnInit {
     this.subscriptions.push(
       this.ewalletService.save(this.ewallet).subscribe(data => {
         this.ewallet = data;
-        alert('Ok');
         this.ewallets.push(this.ewallet)
+        this.closeModal()
       },
       error => {
         alert('Error xxx');
@@ -77,6 +76,11 @@ export class EwalletFormComponent implements OnInit {
   openModal(content) {
     this.modalService.open(content);
   }
+  public closeModal(): void {
+    this.modalService.dismissAll();
+  }
+
+
 
   openModal2(content2,ewallet) {
     this.selectedEwallet = ewallet;

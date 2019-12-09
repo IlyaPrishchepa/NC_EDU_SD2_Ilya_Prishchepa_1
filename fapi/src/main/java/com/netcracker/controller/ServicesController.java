@@ -29,4 +29,9 @@ public class ServicesController {
   public int size(){
     return servicesService.getSize();
   }
+
+  @GetMapping("/find-by-companyId")
+  public List<Services> findByCompanyId(@RequestParam int pageNo, @RequestParam int pageSize, @RequestParam int id) {
+    return servicesService.findByCompanyId(pageNo,pageSize,id);
+  }
 }

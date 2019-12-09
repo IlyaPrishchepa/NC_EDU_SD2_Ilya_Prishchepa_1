@@ -1,5 +1,6 @@
 package com.netcracker.controller;
 
+import com.netcracker.entity.Company;
 import com.netcracker.entity.Services;
 import com.netcracker.services.implementation.ServicesServiceImpl;
 import io.swagger.annotations.Api;
@@ -22,4 +23,9 @@ public class ServicesController {
   @GetMapping("/size")
   public int getSize() {
     return servicesService.getSize();}
+
+  @GetMapping("/find-by-companyId")
+  public List<Services> findByCompanyId(@RequestParam int pageNo, @RequestParam int pageSize, @RequestParam int id) {
+    return servicesService.findByCompanyId(pageNo,pageSize,id);
+  }
 }

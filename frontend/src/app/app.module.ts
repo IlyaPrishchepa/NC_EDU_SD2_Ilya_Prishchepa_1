@@ -33,6 +33,10 @@ import {Interceptor} from "./app.interceptor";
 import {TokenStorage} from "./token.storage";
  import {LoginService} from "./services/login/login.service";
 import { SubscribeFormComponent } from './components/subscription/subscribe-form/subscribe-form.component';
+import { CompanyHomeFormComponent } from './components/home/company-home-form/company-home-form.component';
+import { EwalletCompanyPageFormComponent } from './pages/ewallet-company-page-form/ewallet-company-page-form.component';
+import { AddServiceFormComponent } from './components/add-service-form/add-service-form.component';
+import { AddServicePageFormComponent } from './pages/add-service-page-form/add-service-page-form.component';
 
 
 
@@ -62,7 +66,11 @@ import { SubscribeFormComponent } from './components/subscription/subscribe-form
     AdminHomePageFormComponent,
     CategoryFormComponent,
     CategoryPageFormComponent,
-    SubscribeFormComponent
+    SubscribeFormComponent,
+    CompanyHomeFormComponent,
+    EwalletCompanyPageFormComponent,
+    AddServiceFormComponent,
+    AddServicePageFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Service} from "../../model/services/service"
+import {Observable} from "rxjs";
+import {SubscriptionUser} from "../../model/subscriptionUser/subscriptionUser";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,11 @@ export class ServicesService {
   }
   public getSize() {
     return this.http.get<number>(this.servicesUrl + '/size');
+  }
+
+  public getByCompanyId(pageNo: number,pageSize: number, id: number): Observable<Service[]> {
+    return this.http.get<Service[]>(this.servicesUrl+"/find-by-companyId?pageNo="+(pageNo-1)+"&pageSize="
+      + pageSize + "&id="+id);
   }
 
 }
