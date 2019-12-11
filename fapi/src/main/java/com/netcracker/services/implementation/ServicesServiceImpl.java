@@ -27,7 +27,8 @@ public class ServicesServiceImpl implements ServicesService {
 
   @Override
   public Services add(Services services) {
-    return null;
+    return restTemplate.postForObject(backendApiProperties.getServicesUri(),services,Services.class);
+
   }
 
   @Override

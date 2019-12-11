@@ -12,11 +12,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-<!--    <parent>
-        <artifactId>NC_EDU_SD2_Ilya_Prishchepa</artifactId>
-        <groupId>com.netcracker</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>-->
+    <!--    <parent>
+            <artifactId>NC_EDU_SD2_Ilya_Prishchepa</artifactId>
+            <groupId>com.netcracker</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </parent>-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

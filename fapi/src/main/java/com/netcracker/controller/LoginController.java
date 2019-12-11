@@ -11,8 +11,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/login")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/login")
 public class LoginController {
 
     @Autowired

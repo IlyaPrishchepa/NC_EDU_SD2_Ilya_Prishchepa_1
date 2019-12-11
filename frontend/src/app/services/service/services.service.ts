@@ -12,7 +12,7 @@ export class ServicesService {
   private servicesUrl: string;
 
   constructor(private http: HttpClient) {
-    this.servicesUrl = 'http://localhost:8081/services';
+    this.servicesUrl = 'http://localhost:8081/api/services';
   }
   public getServices(page:number, size:number) {
     return this.http.get<Service[]>(this.servicesUrl + '?pageNo=' + page + '&pageSize=' + size );
@@ -22,8 +22,11 @@ export class ServicesService {
   }
 
   public getByCompanyId(pageNo: number,pageSize: number, id: number): Observable<Service[]> {
-    return this.http.get<Service[]>(this.servicesUrl+"/find-by-companyId?pageNo="+(pageNo-1)+"&pageSize="
+    return this.http.get<Service[]>(this.servicesUrl+"/find-by-companyId?pageNo="+pageNo+"&pageSize="
       + pageSize + "&id="+id);
   }
 
+  public add(service: Service){
+    return this.http.post<Service>(this.servicesUrl,service);
+  }
 }

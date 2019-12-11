@@ -12,7 +12,7 @@ export class EwalletService {
   private ewalletUrl: string;
 
   constructor(private http: HttpClient) {
-    this.ewalletUrl = 'http://localhost:8081/ewallet';
+    this.ewalletUrl = 'http://localhost:8081/api/ewallet';
   }
   public save(ewallet: Ewallet): Observable<Ewallet> {
     return this.http.post<any>(this.ewalletUrl, ewallet);

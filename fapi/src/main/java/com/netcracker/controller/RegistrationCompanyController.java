@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/registration-company")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/registration-company")
 public class RegistrationCompanyController {
   @Autowired
   private CompanyServiceImpl companyService;

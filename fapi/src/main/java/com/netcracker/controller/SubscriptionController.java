@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/subscription")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/subscription")
 public class SubscriptionController {
 
     @Autowired

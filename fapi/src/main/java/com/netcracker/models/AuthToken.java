@@ -1,8 +1,10 @@
 package com.netcracker.models;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class AuthToken {
     private String token;
 

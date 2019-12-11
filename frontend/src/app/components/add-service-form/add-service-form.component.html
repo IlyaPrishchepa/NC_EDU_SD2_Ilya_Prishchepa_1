@@ -1,1 +1,99 @@
-<p>add-service-form works!</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="card my-5" style="width: 30rem;">
+      <div class="card-body">
+        <h1 class="text-center">Create service</h1>
+        <hr>
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=" name-service">Name</span>
+            </div>
+            <input type="text" class="form-control"
+                   aria-label="Default"
+                   aria-describedby="inputGroup-sizing-default"
+                   [(ngModel)]="selectedService.name"
+                   placeholder="Enter name service">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="price-service">Price</span>
+            </div>
+            <input type="text" class="form-control"
+                   aria-label="Default"
+                   aria-describedby="inputGroup-sizing-default"
+                   [(ngModel)]="selectedService.price"
+                   placeholder="Enter price service">
+            <div class="input-group-append">
+              <span class="input-group-text" style="background-color: #FFFFFF">$</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="comment">Description:</label>
+          <textarea class="form-control"
+                    rows="5"
+                    id="comment"
+                    [(ngModel)]="selectedService.description">
+          </textarea>
+        </div>
+
+        <h5 class="text-center">Chose card</h5>
+
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Number card</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Replenish</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ewallet of ewallets; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td> {{ ewallet.numCard  }}</td>
+            <td>{{ ewallet.amount | number }}</td>
+            <button type="button" class="btn btn-light" (click)="openModal(content,ewallet)">Chose</button>
+          </tr>
+          </tbody>
+        </table>
+
+        <ngb-pagination
+          class="d-flex justify-content-center"
+          [collectionSize]="collectionSize"
+          [pageSize]="pageSize"
+          [(page)]="page"
+          [boundaryLinks]="true"
+          (pageChange)="onPageChanged($event)">
+        </ngb-pagination>
+      </div>
+
+        <button type="submit" (click)="createService()"
+                class="btn btn-primary">ok</button>
+    </div>
+  </div>
+  </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Selected card number:</h4>
+    <button type="button" class="close" aria-label="Close"
+            (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <div class="form-group">
+          <h5 class="text-center">{{ selectedEwallet.numCard}}</h5>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>

@@ -13,8 +13,8 @@ export class CompanyService {
   private companyUrl: string;
 
   constructor(private http: HttpClient) {
-    this.regCompanyUrl = 'http://localhost:8081/registration-company';
-    this.companyUrl = 'http://localhost:8081/company';
+    this.regCompanyUrl = 'http://localhost:8081/api/registration-company';
+    this.companyUrl = 'http://localhost:8081/api/company';
   }
 
   public save(regCompany: RegCompany) {

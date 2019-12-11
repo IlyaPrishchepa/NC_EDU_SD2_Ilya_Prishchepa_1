@@ -25,7 +25,7 @@ export class LoginFormComponent implements OnInit {
     this.subscriptions.push(
     this.loginService.authenticate(this.login.email, this.login.password).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.setToken(data.token);
         this.router.navigateByUrl('user-home');
       },
       error => {

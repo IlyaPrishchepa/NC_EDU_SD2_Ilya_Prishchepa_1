@@ -10,8 +10,8 @@ export class UserService {
   private usersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.regUsersUrl = 'http://localhost:8081/registration-user';
-    this.usersUrl = 'http://localhost:8081/user';
+    this.regUsersUrl = 'http://localhost:8081/api/registration-user';
+    this.usersUrl = 'http://localhost:8081/api/user';
   }
 
   save(regUser: RegUser): Observable<RegUser> {

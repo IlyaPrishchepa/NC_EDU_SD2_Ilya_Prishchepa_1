@@ -11,7 +11,7 @@ export class SubscriptionService {
   private subscriptionUrl: string;
 
   constructor(private http: HttpClient) {
-    this.subscriptionUrl = 'http://localhost:8081/subscription';
+    this.subscriptionUrl = 'http://localhost:8081/api/subscription';
   }
 
 

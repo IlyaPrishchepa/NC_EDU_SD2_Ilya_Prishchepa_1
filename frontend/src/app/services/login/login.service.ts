@@ -13,7 +13,7 @@ export class LoginService  {
 
   constructor(private http: HttpClient) {
     this.loginUrl = 'http://localhost:8081/token/generate-token';
-    this.getLoginUrl = 'http://localhost:8081/login/get-current-login';
+    this.getLoginUrl = 'http://localhost:8081/api/login/get-current-login';
   }
 
   public authenticate(email: string, password: string): Observable<any> {

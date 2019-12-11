@@ -9,8 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/ewallet")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/ewallet")
 public class EWalletController {
 
     @Autowired

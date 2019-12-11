@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/services")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/services")
 public class ServicesController {
 
   @Autowired
@@ -32,6 +31,11 @@ public class ServicesController {
 
   @GetMapping("/find-by-companyId")
   public List<Services> findByCompanyId(@RequestParam int pageNo, @RequestParam int pageSize, @RequestParam int id) {
-    return servicesService.findByCompanyId(pageNo,pageSize,id);
+    return servicesService.findByCompanyId(pageNo-1,pageSize,id);
+  }
+
+  @PostMapping
+  public Services save(@RequestBody Services services) {
+    return servicesService.add(services);
   }
 }

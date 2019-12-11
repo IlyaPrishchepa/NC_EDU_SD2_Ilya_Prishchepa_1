@@ -1,53 +1,32 @@
 import {Injectable} from "@angular/core";
-import {Token} from "./model/token";
-
-const TOKEN_KEY = 'AuthToken';
-const LOGIN_KEY = 'Login';
-const ROLE_KEY = 'Role';
-
+import {Login} from "./model/login/login";
 
 @Injectable()
 export class TokenStorage {
 
-  constructor() {
+  private readonly TOKEN_KEY: string = "token";
+  private readonly CURRENT_LOGIN: string = "currentUser";
+
+  private currentLogin: Login;
+
+  public setToken(token: string): void {
+    localStorage.setItem(this.TOKEN_KEY, token);
   }
 
-  public saveToken(token: string) {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
-
-    let decodeJwt: Token = this.decodeJwt(token);
-    window.sessionStorage.setItem(LOGIN_KEY, decodeJwt.sub);
-    window.sessionStorage.setItem(ROLE_KEY, decodeJwt.scopes);
+  public setCurrentUser(currentUser: Login): void {
+    this.currentLogin = currentUser;
+    localStorage.setItem(this.CURRENT_LOGIN, JSON.stringify(currentUser));
   }
 
-  public signOut() {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.removeItem(LOGIN_KEY);
-    window.sessionStorage.removeItem(ROLE_KEY);
-
-    window.sessionStorage.clear();
+  public getCurrentUser(): Login {
+    return this.currentLogin || JSON.parse(localStorage.getItem(this.CURRENT_LOGIN));
   }
 
   public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY);
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
-  public getLogin(): string {
-    return sessionStorage.getItem(LOGIN_KEY);
-  }
-
-  public getRole(): string {
-    return sessionStorage.getItem(ROLE_KEY);
-  }
-
-  public isLogin(): boolean {
-    return sessionStorage.getItem(TOKEN_KEY) !== null;
-  }
-
-  private decodeJwt(token: string): Token {
-    let encodedJwt = token.split('.')[1];
-    let decodedJwt = window.atob(encodedJwt);
-    return JSON.parse(decodedJwt);
+  public clearToken(): void {
+    localStorage.setItem(this.TOKEN_KEY, null);
   }
 }

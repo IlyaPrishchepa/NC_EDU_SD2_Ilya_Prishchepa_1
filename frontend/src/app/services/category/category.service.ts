@@ -11,7 +11,7 @@ export class CategoryService {
   private categoryUrl: string;
 
   constructor(private http: HttpClient) {
-    this.categoryUrl = 'http://localhost:8081/category';
+    this.categoryUrl = 'http://localhost:8081/api/category';
   }
   public getCategory(page:number, size:number) {
     return this.http.get<Category[]>(this.categoryUrl + '?pageNo=' + page + '&pageSize=' + size );
