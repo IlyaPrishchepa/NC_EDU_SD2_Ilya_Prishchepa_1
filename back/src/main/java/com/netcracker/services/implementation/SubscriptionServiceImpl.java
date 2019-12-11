@@ -54,4 +54,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     public int getSize(){
         return (int)subscriptionRepo.count();
     }
+
+    @Override
+    public void updateStatusById(int id, boolean status) {
+        subscriptionRepo.updateStatusById(id,status);
+    }
 }

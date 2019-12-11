@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EWalletServiceImpl implements EWalletService {
@@ -21,6 +22,11 @@ public class EWalletServiceImpl implements EWalletService {
     }
 
     @Override
+    public void updateAmountById(int id,double amount) {
+        eWalletRepo.updateAmountById(id,amount);
+    }
+
+    @Override
     public void delete(int id) {
         eWalletRepo.deleteById(id);
 
@@ -28,12 +34,21 @@ public class EWalletServiceImpl implements EWalletService {
 
     @Override
     public Ewallet findById(int id) {
-        return eWalletRepo.findById(id).get();
+        Optional<Ewallet> wallet = eWalletRepo.findById(id);
+        if (wallet.isPresent()) {
+            return wallet.get();
+        }
+        return null;
     }
 
     @Override
     public List<Ewallet> findByLoginID(int pageNo, int pageSize,int id) {
         return eWalletRepo.findEwalletByLoginId3(PageRequest.of(pageNo,pageSize),id);
+    }
+
+    @Override
+    public Ewallet findByLoginID(int id) {
+        return eWalletRepo.findEwalletByLoginId3(id);
     }
 
     @Override
