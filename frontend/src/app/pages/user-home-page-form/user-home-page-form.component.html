@@ -1,2 +1,11 @@
-<app-header-user-form></app-header-user-form>
-<app-services-form></app-services-form>
+<ng-container *ngIf="!tokenStorage.getCurrentUser() || tokenStorage.getCurrentUser() == 'null' else content">
+  <app-not-found-form></app-not-found-form>
+</ng-container>
+
+
+<ng-template #content>
+  <ng-container *ngIf="tokenStorage.getCurrentUser()?.role == user">
+    <app-header-user-form></app-header-user-form>
+    <app-user-home-form></app-user-home-form>
+  </ng-container>
+</ng-template>

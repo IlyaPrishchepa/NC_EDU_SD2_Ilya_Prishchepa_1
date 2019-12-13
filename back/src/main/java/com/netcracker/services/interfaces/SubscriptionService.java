@@ -14,4 +14,5 @@ public interface SubscriptionService {
     List<Subscription> findByUserId(int page, int size, int id);
     int getSize();
     void updateStatusById(int id,boolean status);
+    int getSizeByByUserId(int id);
 }

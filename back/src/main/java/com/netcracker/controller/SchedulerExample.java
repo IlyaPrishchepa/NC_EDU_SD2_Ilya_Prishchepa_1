@@ -48,50 +48,22 @@ public class SchedulerExample {
 
         for(int i = 0; i < size; i++){
             subscription = subscriptionService.findAll(i, 1).get(0);
-            if(subscription.isStatus() == true) {
-                price = subscription.getServicesId().getPrice();
-                int userEwalletId = subscription.getEwalletId();
-                userAmount = eWalletService.findById(userEwalletId).getAmount();
-                companyId = subscription.getServicesId().getCompanyId();
-                companyLoginId = companyService.findById(companyId).getLoginId2().getId();
-                companyEwalletId = eWalletService.findByLoginID(companyLoginId).getId();
-                companyAmount = eWalletService.findById(companyEwalletId).getAmount();
-                if (userAmount > 0) {
-                    eWalletService.updateAmountById(userEwalletId, userAmount - price);
-                    eWalletService.updateAmountById(companyEwalletId, companyAmount + price);
-                }else{
-                    subscriptionService.updateStatusById(subscription.getId(),false);
-                }
+            price = subscription.getServicesId().getPrice();
+            int userEwalletId = subscription.getEwalletId();
+            userAmount = eWalletService.findById(userEwalletId).getAmount();
+            companyEwalletId = subscription.getServicesId().getSelectedEwallet();
+            companyAmount = eWalletService.findById(companyEwalletId).getAmount();
+            if (userAmount > 0) {
+                eWalletService.updateAmountById(userEwalletId, userAmount - price);
+                eWalletService.updateAmountById(companyEwalletId, companyAmount + price);
+                subscriptionService.updateStatusById(subscription.getId(),true);
+            }else{
+                subscriptionService.updateStatusById(subscription.getId(),false);
             }
+
         }
 
 
 
     }
 }
-
-        /*int size = subscriptionService.getSize();
-        Subscription subscription = new Subscription();
-        Company company = new Company();
-        double price, amountUser,amountCompany;
-        int companyLoginId,eWalletIdOfUser;
-
-        int companyId;
-        for(int i = 0;i<size;i++){
-            subscription = subscriptionService.findAll(i,1).get(0);
-            price = subscription.getServicesId().getPrice();
-            companyId = subscription.getServicesId().getCompanyId();
-            company = companyService.findById(companyId);
-            companyLoginId = company.getLoginId2().getId();
-            eWalletIdOfUser = subscription.getEwalletId();
-            Ewallet ewalletuser = eWalletService.findById(eWalletIdOfUser);
-            if (ewalletuser == null) {
-                System.out.println(eWalletIdOfUser);
-            }
-            List<Ewallet> ewalletListOfCompany = eWalletService.findByLoginID(companyLoginId);
-            System.out.println(ewalletListOfCompany.toString());
-           // amountCompany = eWalletService.findById(companyLoginId).getAmount();
-*//*            if(amountUser > 0){
-                eWalletService.updateAmountById(eWalletIdOfUser,amountUser-price);
-                eWalletService.updateAmountById(companyId,amountCompany+price);
-            }*/

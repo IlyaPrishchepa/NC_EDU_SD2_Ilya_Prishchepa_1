@@ -12,5 +12,7 @@ public interface EWalletService {
     List<Ewallet> findByLoginID(int pageNo, int pageSize, int id);
     Ewallet replenish(int ewalletId, int amount);
     int getSize();
+    int getSizeByLoginId(int id);
+
 
 }

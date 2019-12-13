@@ -24,6 +24,10 @@ export class SubscriptionService {
     return this.http.get<number>(this.subscriptionUrl + '/size');
   }
 
+  public getSizeByUserId(id:number) {
+    return this.http.get<number>(this.subscriptionUrl + '/size-by-userId/'+id);
+  }
+
   public add(subscription: SubscriptionUser): Observable<SubscriptionUser> {
     return this.http.post<SubscriptionUser>(this.subscriptionUrl, subscription);
   }

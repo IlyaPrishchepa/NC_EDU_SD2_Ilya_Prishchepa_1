@@ -5,6 +5,7 @@ export class Service {
   name?: string;
   price?: string;
   description?: string;
+  selectedEwallet?:number;
   categoryId?: Category;
   companyId?: number;
 }

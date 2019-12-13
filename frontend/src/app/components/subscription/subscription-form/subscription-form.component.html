@@ -16,7 +16,10 @@
       <td> {{ subscription.servicesId.name}}</td>
       <td>{{ subscription.startDate| date: 'yyyy-MM-dd' }}</td>
       <td>{{ subscription.servicesId.price }}</td>
-      <td>{{ subscription.status}}</td>
+      <div *ngIf="(subscription.status== true)">
+      <td style="color: #00cc66"><b>ACTIVE</b></td></div>
+      <div *ngIf="(subscription.status== false)">
+        <td style="color: #ff0000"><b>BLOCKED</b></td></div>
     </tr>
     </tbody>
   </table>

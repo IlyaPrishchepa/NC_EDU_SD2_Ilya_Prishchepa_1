@@ -17,10 +17,9 @@ export class CompanyService {
     this.companyUrl = 'http://localhost:8081/api/company';
   }
 
-  public save(regCompany: RegCompany) {
-    return this.http.post<RegCompany>(this.regCompanyUrl, regCompany).subscribe(() => alert("Company was successfully created"));
+  public save(regCompany: RegCompany): Observable<RegCompany> {
+    return this.http.post<RegCompany>(this.regCompanyUrl, regCompany)
   }
-
   getByLoginId(loginId: number): Observable<RegCompany> {
     return this.http.get<RegCompany>(this.companyUrl + '/find-by-loginId/' + loginId);
   }

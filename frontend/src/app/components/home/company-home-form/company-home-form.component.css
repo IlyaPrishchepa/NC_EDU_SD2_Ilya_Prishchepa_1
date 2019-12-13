@@ -122,3 +122,33 @@ card h1, .card .h1, .card h2, .card .h2, .card h3, .card .h3, .card h4, .card .h
   opacity: 0.75;
   filter: alpha(opacity=75);
 }
+
+
+.hide {
+  display: none;
+}
+.hide + label ~ div{
+  display: none;
+}
+
+
+/* new */
+.hide + label {
+  padding: 0;
+  color: azure;
+  cursor: pointer;
+  display: inline-block;
+}
+.hide:checked + label {
+  color: #1D62F0;
+  border-bottom: 0;
+}
+
+.hide:checked + label + div {
+  display: block;
+  padding: 10px;
+}
+
+.demo {
+  margin: 5% 10%;
+}

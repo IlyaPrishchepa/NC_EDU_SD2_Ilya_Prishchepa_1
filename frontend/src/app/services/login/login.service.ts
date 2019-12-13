@@ -8,17 +8,17 @@ import {Login} from "../../model/login/login";
 })
 export class LoginService  {
 
-  private loginUrl: string;
+  private tokenUrl: string;
   private getLoginUrl: string;
 
   constructor(private http: HttpClient) {
-    this.loginUrl = 'http://localhost:8081/token/generate-token';
+    this.tokenUrl = 'http://localhost:8081/token/generate-token';
     this.getLoginUrl = 'http://localhost:8081/api/login/get-current-login';
   }
 
   public authenticate(email: string, password: string): Observable<any> {
     const userDetails = {email: email, password: password};
-    return this.http.post<any>(this.loginUrl, userDetails);
+    return this.http.post<any>(this.tokenUrl, userDetails);
   }
 
   getLogin(): Observable<Login> {

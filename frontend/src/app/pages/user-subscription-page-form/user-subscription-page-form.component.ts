@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Role} from "../../model/enums/role";
+import {TokenStorage} from "../../token.storage";
 
 @Component({
   selector: 'app-user-subscription-page-form',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSubscriptionPageFormComponent implements OnInit {
 
-  constructor() { }
+  user:Role.USER;
+
+  constructor(private tokenStorage: TokenStorage) { }
 
   ngOnInit() {
   }

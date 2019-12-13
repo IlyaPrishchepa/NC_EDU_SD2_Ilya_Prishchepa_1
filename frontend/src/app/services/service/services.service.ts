@@ -21,6 +21,10 @@ export class ServicesService {
     return this.http.get<number>(this.servicesUrl + '/size');
   }
 
+  public getSizeByCompanyId(id:number) {
+    return this.http.get<number>(this.servicesUrl + '/size-by-companyId/' + id);
+  }
+
   public getByCompanyId(pageNo: number,pageSize: number, id: number): Observable<Service[]> {
     return this.http.get<Service[]>(this.servicesUrl+"/find-by-companyId?pageNo="+pageNo+"&pageSize="
       + pageSize + "&id="+id);

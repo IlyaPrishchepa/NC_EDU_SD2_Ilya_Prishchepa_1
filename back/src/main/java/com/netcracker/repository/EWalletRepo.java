@@ -22,4 +22,6 @@ public interface EWalletRepo extends JpaRepository<Ewallet,Integer> {
     @Query(nativeQuery = true,value = "update ewallet set amount = :amount where id = :id")
     void updateAmountById(@Param("id")double id,@Param("amount")double amount);
 
+    int countEwalletByLoginId3(int id);
+
 }

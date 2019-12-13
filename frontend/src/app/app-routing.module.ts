@@ -11,6 +11,7 @@ import {CategoryPageFormComponent} from "./pages/category-page-form/category-pag
 import {CompanyHomePageFormComponent} from "./pages/company-home-page-form/company-home-page-form.component";
 import {EwalletCompanyPageFormComponent} from "./pages/ewallet-company-page-form/ewallet-company-page-form.component";
 import {AddServicePageFormComponent} from "./pages/add-service-page-form/add-service-page-form.component";
+import {NotFoundFormComponent} from "./components/not-found-form/not-found-form.component";
 
 const routes: Routes = [
   { path: 'registration-user', component: UserRegistrationPageFormComponent },
@@ -23,7 +24,9 @@ const routes: Routes = [
   { path: 'category', component: CategoryPageFormComponent },
   { path: 'company-home', component: CompanyHomePageFormComponent },
   { path: 'ewallet-company', component: EwalletCompanyPageFormComponent },
-  { path: 'add-service', component: AddServicePageFormComponent }
+  { path: 'add-service', component: AddServicePageFormComponent },
+  { path: '404', component: NotFoundFormComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

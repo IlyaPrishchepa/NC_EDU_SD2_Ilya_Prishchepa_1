@@ -57,4 +57,9 @@ public class EWalletServiceImpl implements EWalletService {
     public int getSize(){
         return restTemplate.getForObject(backendApiProperties.getEWalletUri()+"/size", Integer.class);
     }
+
+    @Override
+    public int getSizeByLoginId(int id) {
+        return restTemplate.getForObject(backendApiProperties.getEWalletUri()+"/size-by-loginId/" + id, Integer.class);
+    }
 }

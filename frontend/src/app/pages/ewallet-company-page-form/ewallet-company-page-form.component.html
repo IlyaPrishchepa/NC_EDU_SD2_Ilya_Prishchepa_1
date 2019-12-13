@@ -1,2 +1,8 @@
-<app-header-company-form></app-header-company-form>
-<app-ewallet-form></app-ewallet-form>
+<ng-container *ngIf="(tokenStorage.getCurrentCompany() == null)">
+  <app-not-found-form></app-not-found-form>
+</ng-container>
+<ng-container *ngIf="(tokenStorage.getCurrentCompany().role == company)">
+  <app-header-company-form></app-header-company-form>
+  <app-ewallet-form></app-ewallet-form>
+</ng-container>
+

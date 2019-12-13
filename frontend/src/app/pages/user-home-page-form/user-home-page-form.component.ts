@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenStorage} from "../../token.storage";
+import {Role} from "../../model/enums/role";
 
 @Component({
   selector: 'app-user-home-page-form',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHomePageFormComponent implements OnInit {
 
-  constructor() { }
+  user:Role.USER;
+
+  constructor(private tokenStorage: TokenStorage) { }
 
   ngOnInit() {
   }

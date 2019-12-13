@@ -51,5 +51,10 @@ public class ServicesServiceImpl implements ServicesService {
         return (int)servicesRepo.count();
     }
 
+    @Override
+    public int getSizeByCompanyId(int id) {
+        return servicesRepo.countServicesByCompanyId(id);
+    }
+
 
 }

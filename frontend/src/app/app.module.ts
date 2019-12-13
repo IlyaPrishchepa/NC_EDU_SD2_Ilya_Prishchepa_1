@@ -1,7 +1,7 @@
  import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserFormComponent } from './components/registration/user-form/user-form.component';
@@ -19,7 +19,6 @@ import { UserHomePageFormComponent } from './pages/user-home-page-form/user-home
 import { CompanyHomePageFormComponent } from './pages/company-home-page-form/company-home-page-form.component';
 import { HeaderAdminFormComponent } from './components/header/header-admin-form/header-admin-form.component';
 import { UserTableFormComponent } from './components/user/user-table-form/user-table-form.component';
-import { ServicesFormComponent } from './components/service/services-form/services-form.component';
 import { HeaderCompanyFormComponent } from './components/header/header-company-form/header-company-form.component';
 import { HeaderUserFormComponent } from './components/header/header-user-form/header-user-form.component';
 import { SubscriptionFormComponent } from './components/subscription/subscription-form/subscription-form.component';
@@ -37,7 +36,7 @@ import { CompanyHomeFormComponent } from './components/home/company-home-form/co
 import { EwalletCompanyPageFormComponent } from './pages/ewallet-company-page-form/ewallet-company-page-form.component';
 import { AddServiceFormComponent } from './components/add-service-form/add-service-form.component';
 import { AddServicePageFormComponent } from './pages/add-service-page-form/add-service-page-form.component';
-
+import { NotFoundFormComponent } from './components/not-found-form/not-found-form.component';
 
 
 @NgModule({
@@ -56,7 +55,6 @@ import { AddServicePageFormComponent } from './pages/add-service-page-form/add-s
     CompanyHomePageFormComponent,
     HeaderAdminFormComponent,
     UserTableFormComponent,
-    ServicesFormComponent,
     HeaderCompanyFormComponent,
     HeaderUserFormComponent,
     SubscriptionFormComponent,
@@ -70,14 +68,15 @@ import { AddServicePageFormComponent } from './pages/add-service-page-form/add-s
     CompanyHomeFormComponent,
     EwalletCompanyPageFormComponent,
     AddServiceFormComponent,
-    AddServicePageFormComponent
-  ],
+    AddServicePageFormComponent,
+    NotFoundFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NgbDropdownModule,
+    ReactiveFormsModule,
     NgbPaginationModule,
     NgbModule
   ],

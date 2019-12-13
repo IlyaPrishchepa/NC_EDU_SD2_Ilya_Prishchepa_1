@@ -14,9 +14,9 @@ import {Role} from "../../../model/enums/role";
 
 export class UserFormComponent implements  OnInit{
 
-  regUser: RegUser = {loginid: {}} as RegUser;
+  regUser: RegUser = {loginId: {}} as RegUser;
 
-  private subscriptions: Subscription[] = [];
+  private subscriptionsRxjs: Subscription[] = [];
   private role: Role.USER;
 
   constructor(
@@ -29,11 +29,11 @@ export class UserFormComponent implements  OnInit{
   }
 
   signIn(): void {
-    this.subscriptions.push(
+    this.subscriptionsRxjs.push(
       this.userService.save(this.regUser).subscribe(data => {
           this.regUser = data;
           alert('Ok');
-          this.router.navigateByUrl('user-home');
+          this.router.navigateByUrl('login');
         },
         error => {
           alert('Error xxx');

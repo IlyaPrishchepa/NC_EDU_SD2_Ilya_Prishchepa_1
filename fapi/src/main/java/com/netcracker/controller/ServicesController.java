@@ -38,4 +38,9 @@ public class ServicesController {
   public Services save(@RequestBody Services services) {
     return servicesService.add(services);
   }
+
+  @GetMapping("/size-by-companyId/{id}")
+  public int getSizeByCompanyId(@PathVariable int id) {
+    return servicesService.getSizeByCompanyId(id);
+  }
 }

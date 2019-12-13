@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Service} from "../../../model/services/service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ServicesService} from "../../../services/service/services.service";
-import {Login} from "../../../model/login/login";
 import {Subscription} from "rxjs";
-import {LoginService} from "../../../services/login/login.service";
-import {UserService} from "../../../services/reg-user/user.service";
-import {RegCompany} from "../../../model/company/reg-company";
-import {CompanyService} from "../../../services/company/company.service";
+import {TokenStorage} from "../../../token.storage";
 
 @Component({
   selector: 'app-company-home-form',
@@ -24,51 +20,29 @@ export class CompanyHomeFormComponent implements OnInit {
   public services: Service[] = [];
   private subscriptionsRxjs: Subscription[] = [];
 
-  private currentLogin: Login;
-  private currentCompany: RegCompany;
-
   constructor(private modalService: NgbModal,
               private servicesService:ServicesService,
-              private loginService: LoginService,
-              private companyService: CompanyService)
+              private tokenStorage: TokenStorage)
   {
     this.page=1;
   }
 
   ngOnInit() {
-    this.loadLogin();
-  }
-
-
-  private loadLogin(): void {
-    this.subscriptionsRxjs.push(
-      this.loginService.getLogin().subscribe(login => {
-        this.currentLogin = login;
-        this.loadCompany();
-      })
-    )
-  }
-
-  private loadCompany(): void {
-    this.subscriptionsRxjs.push(
-      this.companyService.getByLoginId(this.currentLogin.id).subscribe(company => {
-        this.currentCompany = company;
-        this.getServicesSize();
-        this.getServices();
-      })
-    )
+    this.getServicesSize();
+    this.getServices();
   }
 
   getServices() {
     this.subscriptionsRxjs.push(
-      this.servicesService.getByCompanyId(this.page,this.pageSize,this.currentCompany.id)
+      this.servicesService.getByCompanyId(this.page,this.pageSize,
+        this.tokenStorage.getCurrentCompany().id)
       .subscribe((services: Service[])=>{
         this.services = services
       }));
   }
 
   getServicesSize(){
-    this.servicesService.getSize().subscribe
+    this.servicesService.getSizeByCompanyId(this.tokenStorage.getCurrentCompany().id).subscribe
     ((size:number)=>{this.collectionSize = size});
   }
 

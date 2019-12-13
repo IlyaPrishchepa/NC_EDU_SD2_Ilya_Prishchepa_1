@@ -31,6 +31,11 @@ public class Services {
     @Column(name = "description")
     private String description;
 
+    @Basic
+    @Column(name = "selected_ewallet")
+    private int selectedEwallet;
+
+
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category categoryId;

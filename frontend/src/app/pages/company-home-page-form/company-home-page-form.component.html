@@ -1,2 +1,7 @@
-<app-header-company-form></app-header-company-form>
-<app-company-home-form></app-company-home-form>
+<ng-container *ngIf="!tokenStorage.getCurrentCompany() || tokenStorage.getCurrentCompany() == 'null' else content">
+  <app-not-found-form></app-not-found-form>
+</ng-container>
+<ng-template #content>  <app-header-company-form></app-header-company-form>
+  <app-company-home-form></app-company-home-form>
+</ng-template>
+

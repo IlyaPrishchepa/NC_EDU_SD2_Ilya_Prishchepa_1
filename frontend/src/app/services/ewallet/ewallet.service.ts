@@ -29,4 +29,7 @@ export class EwalletService {
   public getSize() {
     return this.http.get<number>(this.ewalletUrl + '/size');
   }
+  public getSizeByLoginId(id:number) {
+    return this.http.get<number>(this.ewalletUrl + '/size-by-loginId/'+id);
+  }
 }

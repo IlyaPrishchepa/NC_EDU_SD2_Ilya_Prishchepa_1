@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {EwalletService} from '../../../services/ewallet/ewallet.service';
 import {Ewallet} from '../../../model/ewallet/ewallet';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
@@ -14,6 +14,8 @@ import {LoginService} from "../../../services/login/login.service";
 })
 export class EwalletFormComponent implements OnInit {
 
+  public message?: string;
+
   public page:number;
   public pageSize: number = 6;
   public collectionSize: number;
@@ -24,49 +26,39 @@ export class EwalletFormComponent implements OnInit {
 
   public amountOne?: number;
 
-  private currentLogin: Login;
-
   private subscriptions: Subscription[] = [];
 
   constructor(private modalService: NgbModal,
               private ewalletService: EwalletService,
               private loginService: LoginService,
-              private storage: TokenStorage) {
+              private tokenStorage: TokenStorage) {
   }
 
   ngOnInit() {
-    this.loadLogin();
     this.page = 1;
     this.getSize();
+    this.loadWallets();
   }
 
   public create(): void {
     this.subscriptions.push(
       this.ewalletService.save(this.ewallet).subscribe(data => {
         this.ewallet = data;
-        this.ewallets.push(this.ewallet)
-        this.closeModal()
+        this.ewallets.push(this.ewallet);
+        this.message = 'E-wallet created\n ';
       },
       error => {
-        alert('Error xxx');
+        this.message = 'Error! Check entered data.';
         console.log(error);
       })
   );
   }
 
-  private loadLogin(): void {
-    this.subscriptions.push(
-      this.loginService.getLogin().subscribe(login => {
-        this.currentLogin = login;
-        this.loadWallets();
-        this.ewallet.loginId3 = this.currentLogin.id;
-      })
-    )
-  }
-
   private loadWallets(): void {
+    this.ewallet.loginId3 = this.tokenStorage.getCurrentLogin().id;
     this.subscriptions.push(
-      this.ewalletService.getByLoginID(this.page,this.pageSize,this.currentLogin.id).subscribe(wallets => {
+      this.ewalletService.getByLoginID(this.page,this.pageSize,
+        this.tokenStorage.getCurrentLogin().id).subscribe(wallets => {
         this.ewallets = wallets as Ewallet[];
       })
     )
@@ -87,18 +79,26 @@ export class EwalletFormComponent implements OnInit {
     this.modalService.open(content2);
   }
 
+  openMessageModal(content3) {
+    this.modalService.open(content3, { size: 'sm' });
+  }
+
   amount(): void {
     this.subscriptions.push(
       this.ewalletService.replenish(this.selectedEwallet.id, this.amountOne)
         .subscribe((ewallet: Ewallet) => {
           this.ewallet = ewallet;
           this.loadWallets();
+          this.message = 'Balance replenished';
+        },error => {
+          this.message = 'Error! Check entered data.';
+          console.log(error);
         })
     )
   }
 
   getSize(){
-    this.ewalletService.getSize().subscribe
+    this.ewalletService.getSizeByLoginId(this.tokenStorage.getCurrentLogin().id).subscribe
     ((size:number)=>{this.collectionSize = size});
   }
 

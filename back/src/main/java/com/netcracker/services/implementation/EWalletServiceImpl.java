@@ -64,5 +64,10 @@ public class EWalletServiceImpl implements EWalletService {
         return (int)eWalletRepo.count();
     }
 
+    @Override
+    public int getSizeByLoginId(int id) {
+        return eWalletRepo.countEwalletByLoginId3(id);
+    }
+
 
 }

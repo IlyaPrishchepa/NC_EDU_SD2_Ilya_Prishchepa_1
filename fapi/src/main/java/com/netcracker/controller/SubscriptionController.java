@@ -31,5 +31,11 @@ public class SubscriptionController {
 
     @GetMapping("/size")
     public int getSize() {
-        return subscriptionService.getSize(); }
+        return subscriptionService.getSize();
+    }
+
+    @GetMapping("/size-by-userId/{id}")
+    public int getSizeByUserId(@PathVariable int id) {
+        return subscriptionService.getSizeByByUserId(id);
+    }
 }

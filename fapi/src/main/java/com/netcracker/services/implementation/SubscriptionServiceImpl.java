@@ -57,4 +57,9 @@ public class SubscriptionServiceImpl implements SubscriptionService {
         return restTemplate.getForObject(backendApiProperties.getSubscriptionUri()+"/size", Integer.class);
     }
 
+    @Override
+    public int getSizeByByUserId(int id) {
+        return restTemplate.getForObject(backendApiProperties.getSubscriptionUri()+"/size-by-userId/"+id, Integer.class);
+    }
+
 }

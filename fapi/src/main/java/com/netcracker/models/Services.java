@@ -11,6 +11,7 @@ public class Services {
     private String name;
     private String price;
     private String description;
+    private int selectedEwallet;
     private Category categoryId;
     private int companyId;
 

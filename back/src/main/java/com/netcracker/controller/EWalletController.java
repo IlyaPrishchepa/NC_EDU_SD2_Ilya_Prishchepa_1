@@ -44,6 +44,11 @@ public class EWalletController {
 
     @GetMapping("/size")
     public int getSize() {
-        return eWalletService.getSize(); }
+        return eWalletService.getSize();
+    }
 
+    @GetMapping("/size-by-loginId/{id}")
+    public int getSizeByLoginId(@PathVariable int id) {
+        return eWalletService.getSizeByLoginId(id);
+        }
 }

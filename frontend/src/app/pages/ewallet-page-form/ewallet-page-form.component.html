@@ -1,2 +1,7 @@
-<app-header-user-form></app-header-user-form>
-<app-ewallet-form></app-ewallet-form>
+<ng-container *ngIf="(tokenStorage.getCurrentLogin() == null)">
+  <app-not-found-form></app-not-found-form>
+</ng-container>
+<ng-container *ngIf="(tokenStorage.getCurrentUser()?.role == user)">
+  <app-header-user-form></app-header-user-form>
+  <app-ewallet-form></app-ewallet-form>
+</ng-container>

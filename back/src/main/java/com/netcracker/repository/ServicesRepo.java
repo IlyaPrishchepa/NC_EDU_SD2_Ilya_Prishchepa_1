@@ -11,4 +11,5 @@ import java.util.List;
 public interface ServicesRepo extends JpaRepository<Services,Integer> {
     Services findByName(String name);
     List<Services> findServicesByCompanyId(int companyId, Pageable pageable);
+    int countServicesByCompanyId(int id);
 }

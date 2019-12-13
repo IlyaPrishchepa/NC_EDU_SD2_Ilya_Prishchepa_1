@@ -3,12 +3,11 @@ import {Service} from "../../model/services/service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Ewallet} from "../../model/ewallet/ewallet";
 import {Subscription} from "rxjs";
-import {Login} from "../../model/login/login";
 import {LoginService} from "../../services/login/login.service";
 import {EwalletService} from "../../services/ewallet/ewallet.service";
 import {ServicesService} from "../../services/service/services.service";
-import {RegCompany} from "../../model/company/reg-company";
 import {CompanyService} from "../../services/company/company.service";
+import {TokenStorage} from "../../token.storage";
 
 @Component({
   selector: 'app-add-service-form',
@@ -24,54 +23,37 @@ export class AddServiceFormComponent implements OnInit {
   public selectedService: Service = new Service();
   private subscriptionsRxjs: Subscription[] = [];
 
-  public ewallet: Ewallet = new Ewallet();
   public ewallets: Ewallet[] = [];
   public selectedEwallet: Ewallet;
 
-  private currentLogin: Login;
-  private currentCompany: RegCompany;
+  public message?: string;
 
   constructor(private modalService: NgbModal,
+              private tokenStorage: TokenStorage,
               private loginService: LoginService,
               private ewalletService: EwalletService,
               private companyService: CompanyService,
               private servicesService: ServicesService) {
+    this.page = 1;
   }
 
   ngOnInit() {
-    this.loadLogin();
-    this.page = 1;
+    this.loadWallets();
     this.getSize();
   }
 
-  private loadLogin(): void {
-    this.subscriptionsRxjs.push(
-      this.loginService.getLogin().subscribe(login => {
-        this.currentLogin = login;
-        this.loadCompany();
-      })
-    )
-  }
-
-  private loadCompany(): void {
-    this.subscriptionsRxjs.push(
-      this.companyService.getByLoginId(this.currentLogin.id).subscribe(company => {
-        this.currentCompany = company;
-        this.loadWallets();
-      })
-    )
-  }
 
   private loadWallets(): void {
     this.subscriptionsRxjs.push(
-      this.ewalletService.getByLoginID(this.page, this.pageSize, this.currentLogin.id).subscribe(wallets => {
+      this.ewalletService.getByLoginID(this.page, this.pageSize, this.tokenStorage.getCurrentLogin().id)
+        .subscribe(wallets => {
         this.ewallets = wallets as Ewallet[];
       })
     )
   }
 
   getSize() {
-    this.ewalletService.getSize().subscribe
+    this.ewalletService.getSizeByLoginId(this.tokenStorage.getCurrentLogin().id).subscribe
     ((size: number) => {
       this.collectionSize = size
     });
@@ -87,9 +69,23 @@ export class AddServiceFormComponent implements OnInit {
     this.modalService.open(content, {centered: true});
   }
 
+  openMessageModal(content2) {
+    this.modalService.open(content2, { size: 'sm' });
+  }
+
   createService() {
-    this.selectedService.companyId = this.currentCompany.id;
+    this.selectedService.companyId = this.tokenStorage.getCurrentCompany().id;
+    this.selectedService.selectedEwallet = this.selectedEwallet.id;
     this.servicesService.add(this.selectedService).subscribe(() => {
+      this.message = 'Service created!'
+    },error => {
+      this.message = 'Error! Check entered data.';
+      console.log(error);
     });
   }
+
+  public closeModal(): void {
+    this.modalService.dismissAll();
+  }
+
 }

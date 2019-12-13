@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Role} from "../../model/enums/role";
+import {TokenStorage} from "../../token.storage";
 
 @Component({
   selector: 'app-add-service-page-form',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddServicePageFormComponent implements OnInit {
 
-  constructor() { }
+
+  company:Role.COMPANY;
+
+  constructor(private tokenStorage: TokenStorage) { }
 
   ngOnInit() {
   }
+
 
 }

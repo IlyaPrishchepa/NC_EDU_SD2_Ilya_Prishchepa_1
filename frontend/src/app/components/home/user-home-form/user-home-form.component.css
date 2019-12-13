@@ -1,0 +1,163 @@
+card h1, .card .h1, .card h2, .card .h2, .card h3, .card .h3, .card h4, .card .h4 {
+  font-weight: 400;
+  margin: 30px 0 15px;
+}
+.card h1, .card .h1 {
+  font-size: 52px;
+  height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card h2, .card .h2 {
+  font-size: 36px;
+}
+.card h3, .card .h3 {
+  font-size: 28px;
+  margin: 20px 0 10px;
+}
+.card h4, .card .h4 {
+  font-size: 24px;
+  line-height: 30px;
+
+}
+.card h5, .card .h5 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.card h6, .card .h6 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+}
+.btn-neutral.btn-fill {
+  color: #FFFFFF;
+  background-color: #FFFFFF;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.btn-neutral.btn-fill:hover,
+.btn-neutral.btn-fill:focus,
+.btn-neutral.btn-fill:active,
+.btn-neutral.btn-fill.active,
+.open > .btn-neutral.btn-fill.dropdown-toggle {
+  background-color: #1D62F0;
+}
+.btn-neutral.btn-fill, .btn-neutral.btn-fill:hover, .btn-neutral.btn-fill:focus {
+  color: #888888;
+}
+.btn-round {
+  border-width: 1px;
+  border-radius: 30px !important;
+  padding: 9px 18px;
+}
+.card {
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.23);
+  background-color: #FFFFFF;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  position: relative;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card .title,
+.card .content,
+.card .footer,
+.card a {
+  position: relative;
+  z-index: 3;
+}
+.card[data-radius="none"] .header img {
+  border-radius: 0px 0px 0 0;
+}
+.card .btn {
+  text-shadow: none;
+  font-weight: bold;
+}
+.card .content .price {
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  color: white;
+  border-radius: 50%;
+  width: 155px;
+  height: 155px;
+  margin: 40px auto;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 200px;
+}
+.card .content .price h4 {
+  margin: 5px 0 0;
+  font-size: 36px;
+}
+.card .content .price h6 {
+  margin-top: 37px;
+  font-size: 17px;
+}
+.card .filter,
+.card .header .actions {
+  position: absolute;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.76);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.card .footer {
+  padding: 0 15px 15px;
+}
+.card[data-background="image"] .filter, .card[data-background="color"] .filter {
+  border-radius: 6px;
+}
+.card[data-background="image"] .title,
+.card[data-background="image"] .description,
+.card[data-background="image"] a, .card[data-background="color"] .title,
+.card[data-background="color"] a {
+  color: #FFFFFF;
+}
+.card[data-background="image"] {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+.card[data-background="image"] .filter {
+  opacity: 0.55;
+  filter: alpha(opacity=55.0);
+}
+.card[data-background="image"]:hover .filter {
+  opacity: 0.75;
+  filter: alpha(opacity=75);
+}
+
+
+.hide {
+  display: none;
+}
+.hide + label ~ div{
+  display: none;
+}
+
+
+/* new */
+.hide + label {
+  padding: 0;
+  color: azure;
+  cursor: pointer;
+  display: inline-block;
+}
+.hide:checked + label {
+  color: #1D62F0;
+  border-bottom: 0;
+}
+
+.hide:checked + label + div {
+  display: block;
+  padding: 10px;
+}
+
+.demo {
+  margin: 5% 10%;
+}

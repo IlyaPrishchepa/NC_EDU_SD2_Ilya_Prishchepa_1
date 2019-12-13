@@ -64,4 +64,9 @@ public class ServicesServiceImpl implements ServicesService {
   public int getSize(){
     return restTemplate.getForObject(backendApiProperties.getServicesUri()+"/size", Integer.class);
   }
+
+  @Override
+  public int getSizeByCompanyId(int id) {
+    return restTemplate.getForObject(backendApiProperties.getServicesUri()+"/size-by-companyId/"+id, Integer.class);
+  }
 }

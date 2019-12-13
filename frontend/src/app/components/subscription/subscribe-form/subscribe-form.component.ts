@@ -2,13 +2,11 @@ import { Component, OnInit,Input } from '@angular/core';
 
 import {Service} from "../../../model/services/service";
 import {Ewallet} from "../../../model/ewallet/ewallet";
-import {Login} from "../../../model/login/login";
 import {Subscription} from "rxjs";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {EwalletService} from "../../../services/ewallet/ewallet.service";
 import {LoginService} from "../../../services/login/login.service";
 import {TokenStorage} from "../../../token.storage";
-import {RegUser} from "../../../model/user/reg-user";
 import {UserService} from "../../../services/reg-user/user.service";
 import {SubscriptionUser} from "../../../model/subscriptionUser/subscriptionUser";
 import {SubscriptionService} from "../../../services/subscription/subscription.service";
@@ -28,9 +26,6 @@ export class SubscribeFormComponent implements OnInit {
 
   public ewallets: Ewallet[] = [];
 
-  private currentLogin: Login;
-  private currentUser: RegUser;
-
   private subscriptionsRxjs: Subscription[] = [];
 
   private subscriptionUser: SubscriptionUser= new SubscriptionUser();
@@ -40,39 +35,22 @@ export class SubscribeFormComponent implements OnInit {
               private loginService: LoginService,
               private userService:UserService,
               private subscriptionService:SubscriptionService,
-              private storage: TokenStorage) {
+              private tokenStorage: TokenStorage) {
   }
 
   ngOnInit() {
-    this.loadLogin();
     this.page = 1;
     this.getSize();
+    this.loadWallets();
     this.subscriptionUser.status=true;
   }
 
 
-
-  private loadLogin(): void {
-    this.subscriptionsRxjs.push(
-      this.loginService.getLogin().subscribe(login => {
-        this.currentLogin = login;
-        this.loadWallets();
-        this.loadUser()
-      })
-    )
-  }
-
   private loadWallets(): void {
     this.subscriptionsRxjs.push(
-      this.ewalletService.getByLoginID(this.page,this.pageSize,this.currentLogin.id).subscribe(wallets => {
+      this.ewalletService.getByLoginID(this.page,this.pageSize,
+        this.tokenStorage.getCurrentLogin().id).subscribe(wallets => {
         this.ewallets = wallets as Ewallet[];
-      })
-    )
-  }
-  private loadUser(): void {
-    this.subscriptionsRxjs.push(
-      this.userService.getUserByLoginId(this.currentLogin.id).subscribe(user => {
-        this.currentUser = user;
       })
     )
   }
@@ -81,7 +59,7 @@ export class SubscribeFormComponent implements OnInit {
     this.subscriptionUser.ewalletId = id;
     this.subscriptionUser.status = true;
     this.subscriptionUser.servicesId = this.serviceGet;
-    this.subscriptionUser.userId = this.currentUser.id;
+    this.subscriptionUser.userId = this.tokenStorage.getCurrentUser().id;
   }
 
   subscribe(id:number){
@@ -91,14 +69,8 @@ export class SubscribeFormComponent implements OnInit {
     this.closeModal();
   }
 
-/*
-  delete(id:number){
-    this.categoryService.delete(id).subscribe(() => {this.ngOnInit();});
-  }
-*/
-
   getSize(){
-    this.ewalletService.getSize().subscribe
+    this.ewalletService.getSizeByLoginId(this.tokenStorage.getCurrentLogin().id).subscribe
     ((size:number)=>{this.collectionSize = size});
   }
 

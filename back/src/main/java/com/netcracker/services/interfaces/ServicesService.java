@@ -12,4 +12,5 @@ public interface ServicesService {
     Services findByName(String name);
     Services findById(int id);
     int getSize();
+    int getSizeByCompanyId(int id);
 }

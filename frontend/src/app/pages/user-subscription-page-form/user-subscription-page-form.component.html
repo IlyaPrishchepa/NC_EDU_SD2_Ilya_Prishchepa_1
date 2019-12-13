@@ -1,2 +1,7 @@
-<app-header-user-form></app-header-user-form>
-<app-subscription-form></app-subscription-form>
+<ng-container *ngIf="(tokenStorage.getCurrentUser() == null)">
+  <app-not-found-form></app-not-found-form>
+</ng-container>
+<ng-container *ngIf="(tokenStorage.getCurrentUser().role == user)">
+  <app-header-user-form></app-header-user-form>
+  <app-subscription-form></app-subscription-form>
+</ng-container>

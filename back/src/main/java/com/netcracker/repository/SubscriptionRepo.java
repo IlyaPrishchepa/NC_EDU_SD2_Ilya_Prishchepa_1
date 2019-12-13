@@ -22,4 +22,6 @@ public interface SubscriptionRepo extends JpaRepository<Subscription, Integer> {
 
 
     List<Subscription> findSubscriptionByUserId(int loginId, Pageable pageable);
+
+    int countSubscriptionByUserId(int id);
 }

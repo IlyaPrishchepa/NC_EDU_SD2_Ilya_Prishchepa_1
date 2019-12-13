@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {TokenStorage} from "../../../token.storage";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header-user-form',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderUserFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private tokenStorage: TokenStorage) {
+  }
 
   ngOnInit() {
+  }
+
+  login() {
+    this.tokenStorage.clearAll();
+    this.router.navigateByUrl('login');
   }
 
 }

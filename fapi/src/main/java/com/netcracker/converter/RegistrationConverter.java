@@ -28,7 +28,7 @@ public class RegistrationConverter {
         Login login = new Login();
         login.setEmail(regCompany.getEmail());
         login.setRole("COMPANY");
-        login.setPassword(regCompany.getPassword());
+        login.setPassword(passwordEncoder.encode(regCompany.getPassword()));
 
         Company company = new Company();
         company.setName(regCompany.getName());
